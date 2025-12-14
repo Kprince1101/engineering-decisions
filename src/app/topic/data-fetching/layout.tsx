@@ -17,7 +17,7 @@ function DataFetchingLayoutContent({ children }: { children: ReactNode }) {
                 active={activeSection}
                 onChange={setActiveSection}
             />
-            <DocumentSurface>
+            <DocumentSurface className="w-full max-w-6xl">
                 {children}
             </DocumentSurface>
         </>
