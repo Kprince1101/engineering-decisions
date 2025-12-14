@@ -1,32 +1,31 @@
 import { DemoBlock } from '@/components/demo/DemoBlock';
 import { SandpackEditor } from '@/components/demo/SandpackEditor';
-import { ContentContainer, SectionBlock, SubsectionBlock, CriteriaGrid, CriteriaItem } from '@/components/content';
+import { SectionBlock, SubsectionBlock, CriteriaGrid, CriteriaItem } from '@/components/content';
 
 export function MantineComponents() {
   return (
-    <ContentContainer>
-      <SectionBlock title="Mantine: Components">
-        <SubsectionBlock heading="Buttons">
-          <CriteriaGrid>
-            <CriteriaItem label="What matters">
-              <p>
-                Variant flexibility (primary, secondary, outline, ghost),
-                loading states that prevent double-submission, disabled states that communicate why,
-                and size variants that work across contexts.
-              </p>
-            </CriteriaItem>
-            <CriteriaItem label="Mantine's approach">
-              <p>
-                Provides a comprehensive Button component with
-                built-in variants, loading states, and polymorphic rendering. Supports left/right icons,
-                compact sizing, and gradient fills. Loading state is managed via a single prop with
-                built-in spinner integration.
-              </p>
-            </CriteriaItem>
-          </CriteriaGrid>
-          <DemoBlock title="Button Variants">
-            <SandpackEditor
-              code={`import { MantineProvider, Button, Stack } from '@mantine/core';
+    <SectionBlock title="Mantine: Components">
+      <SubsectionBlock heading="Buttons">
+        <CriteriaGrid>
+          <CriteriaItem label="What matters">
+            <p>
+              Variant flexibility (primary, secondary, outline, ghost),
+              loading states that prevent double-submission, disabled states that communicate why,
+              and size variants that work across contexts.
+            </p>
+          </CriteriaItem>
+          <CriteriaItem label="Mantine's approach">
+            <p>
+              Provides a comprehensive Button component with
+              built-in variants, loading states, and polymorphic rendering. Supports left/right icons,
+              compact sizing, and gradient fills. Loading state is managed via a single prop with
+              built-in spinner integration.
+            </p>
+          </CriteriaItem>
+        </CriteriaGrid>
+        <DemoBlock title="Button Variants">
+          <SandpackEditor
+            code={`import { MantineProvider, Button, Stack } from '@mantine/core';
 import '@mantine/core/styles.css';
 
 export default function App() {
@@ -42,35 +41,35 @@ export default function App() {
     </MantineProvider>
   );
 }`}
-              dependencies={{
-                '@mantine/core': '^7.14.4',
-                '@mantine/hooks': '^7.14.4',
-              }}
-            />
-          </DemoBlock>
-        </SubsectionBlock>
+            dependencies={{
+              '@mantine/core': '^7.14.4',
+              '@mantine/hooks': '^7.14.4',
+            }}
+          />
+        </DemoBlock>
+      </SubsectionBlock>
 
-        <SubsectionBlock heading="Form Inputs">
-          <CriteriaGrid>
-            <CriteriaItem label="What matters">
-              <p>
-                Consistent validation patterns, clear error states,
-                accessibility labels, support for controlled/uncontrolled modes, and composability
-                with form libraries like React Hook Form.
-              </p>
-            </CriteriaItem>
-            <CriteriaItem label="Mantine's approach">
-              <p>
-                All inputs share a common API surface (TextInput,
-                NumberInput, Select, etc.). Built-in error prop, description text, required indicator,
-                and icon support. Integrates well with form libraries through standard onChange/value patterns.
-                Provides useForm hook for simple cases.
-              </p>
-            </CriteriaItem>
-          </CriteriaGrid>
-          <DemoBlock title="Form Input Validation">
-            <SandpackEditor
-              code={`import { MantineProvider, TextInput, Button, Stack } from '@mantine/core';
+      <SubsectionBlock heading="Form Inputs">
+        <CriteriaGrid>
+          <CriteriaItem label="What matters">
+            <p>
+              Consistent validation patterns, clear error states,
+              accessibility labels, support for controlled/uncontrolled modes, and composability
+              with form libraries like React Hook Form.
+            </p>
+          </CriteriaItem>
+          <CriteriaItem label="Mantine's approach">
+            <p>
+              All inputs share a common API surface (TextInput,
+              NumberInput, Select, etc.). Built-in error prop, description text, required indicator,
+              and icon support. Integrates well with form libraries through standard onChange/value patterns.
+              Provides useForm hook for simple cases.
+            </p>
+          </CriteriaItem>
+        </CriteriaGrid>
+        <DemoBlock title="Form Input Validation">
+          <SandpackEditor
+            code={`import { MantineProvider, TextInput, Button, Stack } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import '@mantine/core/styles.css';
 
@@ -113,35 +112,35 @@ export default function App() {
     </MantineProvider>
   );
 }`}
-              dependencies={{
-                '@mantine/core': '^7.14.4',
-                '@mantine/hooks': '^7.14.4',
-                '@mantine/form': '^7.14.4',
-              }}
-            />
-          </DemoBlock>
-        </SubsectionBlock>
+            dependencies={{
+              '@mantine/core': '^7.14.4',
+              '@mantine/hooks': '^7.14.4',
+              '@mantine/form': '^7.14.4',
+            }}
+          />
+        </DemoBlock>
+      </SubsectionBlock>
 
-        <SubsectionBlock heading="Dialogs & Overlays">
-          <CriteriaGrid>
-            <CriteriaItem label="What matters">
-              <p>
-                Focus trapping (keyboard users can't escape), accessible
-                close mechanisms, backdrop click handling, scroll locking on the body, and animations
-                that don't cause layout shift.
-              </p>
-            </CriteriaItem>
-            <CriteriaItem label="Mantine's approach">
-              <p>
-                Modal component handles focus trapping via @mantine/hooks,
-                includes built-in overlay, supports nested modals, and provides size presets. Drawers and
-                Popovers follow similar patterns. Accessibility is handled by default with proper ARIA attributes.
-              </p>
-            </CriteriaItem>
-          </CriteriaGrid>
-          <DemoBlock title="Modal Behavior">
-            <SandpackEditor
-              code={`import { MantineProvider, Modal, Button, Text } from '@mantine/core';
+      <SubsectionBlock heading="Dialogs & Overlays">
+        <CriteriaGrid>
+          <CriteriaItem label="What matters">
+            <p>
+              Focus trapping (keyboard users can't escape), accessible
+              close mechanisms, backdrop click handling, scroll locking on the body, and animations
+              that don't cause layout shift.
+            </p>
+          </CriteriaItem>
+          <CriteriaItem label="Mantine's approach">
+            <p>
+              Modal component handles focus trapping via @mantine/hooks,
+              includes built-in overlay, supports nested modals, and provides size presets. Drawers and
+              Popovers follow similar patterns. Accessibility is handled by default with proper ARIA attributes.
+            </p>
+          </CriteriaItem>
+        </CriteriaGrid>
+        <DemoBlock title="Modal Behavior">
+          <SandpackEditor
+            code={`import { MantineProvider, Modal, Button, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import '@mantine/core/styles.css';
 
@@ -170,34 +169,34 @@ export default function App() {
     </MantineProvider>
   );
 }`}
-              dependencies={{
-                '@mantine/core': '^7.14.4',
-                '@mantine/hooks': '^7.14.4',
-              }}
-            />
-          </DemoBlock>
-        </SubsectionBlock>
+            dependencies={{
+              '@mantine/core': '^7.14.4',
+              '@mantine/hooks': '^7.14.4',
+            }}
+          />
+        </DemoBlock>
+      </SubsectionBlock>
 
-        <SubsectionBlock heading="Notifications">
-          <CriteriaGrid>
-            <CriteriaItem label="What matters">
-              <p>
-                Global vs contextual feedback, dismissibility, auto-dismiss timers,
-                stacking behavior, and accessibility announcements for screen readers.
-              </p>
-            </CriteriaItem>
-            <CriteriaItem label="Mantine's approach">
-              <p>
-                Provides a notifications system (@mantine/notifications)
-                with imperative API (notifications.show). Supports positioning, auto-close, colors, icons,
-                and actions. Uses Notification component internally with consistent styling. Handles stacking
-                and animations out of the box.
-              </p>
-            </CriteriaItem>
-          </CriteriaGrid>
-          <DemoBlock title="Notifications & Feedback">
-            <SandpackEditor
-              code={`import { MantineProvider, Button, Group } from '@mantine/core';
+      <SubsectionBlock heading="Notifications">
+        <CriteriaGrid>
+          <CriteriaItem label="What matters">
+            <p>
+              Global vs contextual feedback, dismissibility, auto-dismiss timers,
+              stacking behavior, and accessibility announcements for screen readers.
+            </p>
+          </CriteriaItem>
+          <CriteriaItem label="Mantine's approach">
+            <p>
+              Provides a notifications system (@mantine/notifications)
+              with imperative API (notifications.show). Supports positioning, auto-close, colors, icons,
+              and actions. Uses Notification component internally with consistent styling. Handles stacking
+              and animations out of the box.
+            </p>
+          </CriteriaItem>
+        </CriteriaGrid>
+        <DemoBlock title="Notifications & Feedback">
+          <SandpackEditor
+            code={`import { MantineProvider, Button, Group } from '@mantine/core';
 import { Notifications, notifications } from '@mantine/notifications';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
@@ -252,15 +251,14 @@ export default function App() {
     </MantineProvider>
   );
 }`}
-              dependencies={{
-                '@mantine/core': '^7.14.4',
-                '@mantine/hooks': '^7.14.4',
-                '@mantine/notifications': '^7.14.4',
-              }}
-            />
-          </DemoBlock>
-        </SubsectionBlock>
-      </SectionBlock>
-    </ContentContainer>
+            dependencies={{
+              '@mantine/core': '^7.14.4',
+              '@mantine/hooks': '^7.14.4',
+              '@mantine/notifications': '^7.14.4',
+            }}
+          />
+        </DemoBlock>
+      </SubsectionBlock>
+    </SectionBlock>
   );
 }

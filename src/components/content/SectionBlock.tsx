@@ -19,7 +19,7 @@ export function SectionBlock({ children, title, className = '' }: SectionBlockPr
             style={{ width: '85%', marginInline: 'auto', paddingBlock: '1.5%' }}
         >
             {title && (
-                <h2 className="text-2xl font-semibold text-slate-800">
+                <h2 className="text-2xl font-semibold text-slate-800" style={{ paddingBlockStart: '1.75rem' }}>
                     {title}
                 </h2>
             )}

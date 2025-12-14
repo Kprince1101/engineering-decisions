@@ -1,40 +1,39 @@
 import { DemoBlock } from '@/components/demo/DemoBlock';
 import { SandpackEditor } from '@/components/demo/SandpackEditor';
-import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/content';
+import { SectionBlock, SubsectionBlock } from '@/components/content';
 
 export function ChakraComponents() {
   return (
-    <ContentContainer>
-      <SectionBlock title="Chakra UI: Components">
-        <SubsectionBlock heading="Buttons & Interactive Elements">
-          <p>
-            <strong>Prebuilt variants with theme integration:</strong> Chakra's Button component ships with
-            several variants (<code>solid</code>, <code>outline</code>, <code>ghost</code>, <code>link</code>)
-            that pull styling from your theme provider. Colors are referenced via theme tokens
-            (<code>colorScheme="blue"</code>), ensuring consistency across your application without manual
-            class management.
-          </p>
-          <p>
-            <strong>Loading and disabled states:</strong> Loading states are built in via the <code>isLoading</code>
-            prop, which automatically displays a spinner and disables interaction. Disabled states respect theme
-            tokens for opacity and cursor behavior. These patterns are accessible by default—focus indicators,
-            ARIA attributes, and keyboard navigation work out of the box.
-          </p>
-          <p>
-            <strong>Style props vs CSS ownership:</strong> Instead of writing CSS or Tailwind classes, you pass
-            style props directly to components (<code>bg="blue.500"</code>, <code>p={'{'}{4}{'}'}</code>, <code>_hover={'{{'}bg: "blue.600"{'}}'}</code>).
-            This feels natural in JSX but introduces runtime CSS-in-JS overhead. You're not owning CSS files—you're
-            configuring components through props that Chakra converts to styles at runtime.
-          </p>
-          <p>
-            <strong>Accessibility defaults:</strong> Focus management, keyboard navigation, and ARIA labeling are
-            handled automatically. Buttons are properly announced to screen readers, focus indicators follow WCAG
-            guidelines, and hover/active states are distinguishable. This is a significant time saver for teams
-            without dedicated accessibility expertise, but you're working within Chakra's accessibility model.
-          </p>
-          <DemoBlock title="Button Variants (Theme-Driven)">
-            <SandpackEditor
-              code={`import React from 'react';
+    <SectionBlock title="Chakra UI: Components">
+      <SubsectionBlock heading="Buttons & Interactive Elements">
+        <p>
+          <strong>Prebuilt variants with theme integration:</strong> Chakra's Button component ships with
+          several variants (<code>solid</code>, <code>outline</code>, <code>ghost</code>, <code>link</code>)
+          that pull styling from your theme provider. Colors are referenced via theme tokens
+          (<code>colorScheme="blue"</code>), ensuring consistency across your application without manual
+          class management.
+        </p>
+        <p>
+          <strong>Loading and disabled states:</strong> Loading states are built in via the <code>isLoading</code>
+          prop, which automatically displays a spinner and disables interaction. Disabled states respect theme
+          tokens for opacity and cursor behavior. These patterns are accessible by default—focus indicators,
+          ARIA attributes, and keyboard navigation work out of the box.
+        </p>
+        <p>
+          <strong>Style props vs CSS ownership:</strong> Instead of writing CSS or Tailwind classes, you pass
+          style props directly to components (<code>bg="blue.500"</code>, <code>p={'{'}{4}{'}'}</code>, <code>_hover={'{{'}bg: "blue.600"{'}}'}</code>).
+          This feels natural in JSX but introduces runtime CSS-in-JS overhead. You're not owning CSS files—you're
+          configuring components through props that Chakra converts to styles at runtime.
+        </p>
+        <p>
+          <strong>Accessibility defaults:</strong> Focus management, keyboard navigation, and ARIA labeling are
+          handled automatically. Buttons are properly announced to screen readers, focus indicators follow WCAG
+          guidelines, and hover/active states are distinguishable. This is a significant time saver for teams
+          without dedicated accessibility expertise, but you're working within Chakra's accessibility model.
+        </p>
+        <DemoBlock title="Button Variants (Theme-Driven)">
+          <SandpackEditor
+            code={`import React from 'react';
 import { ChakraProvider, Button, VStack, HStack, Heading, Text } from '@chakra-ui/react';
 
 export default function App() {
@@ -109,45 +108,45 @@ export default function App() {
     </ChakraProvider>
   );
 }`}
-              dependencies={{
-                'react': '^18.0.0',
-                'react-dom': '^18.0.0',
-                '@chakra-ui/react': '^2.8.2',
-                '@emotion/react': '^11.11.1',
-                '@emotion/styled': '^11.11.0',
-                'framer-motion': '^10.16.4',
-              }}
-            />
-          </DemoBlock>
+            dependencies={{
+              'react': '^18.0.0',
+              'react-dom': '^18.0.0',
+              '@chakra-ui/react': '^2.8.2',
+              '@emotion/react': '^11.11.1',
+              '@emotion/styled': '^11.11.0',
+              'framer-motion': '^10.16.4',
+            }}
+          />
+        </DemoBlock>
 
-          <h3>Form Inputs & Validation</h3>
-          <p>
-            <strong>Integrated form components:</strong> Chakra provides <code>FormControl</code>, <code>FormLabel</code>,
-            <code>FormErrorMessage</code>, and <code>FormHelperText</code> components that wire accessibility
-            attributes automatically. When you mark a FormControl as <code>isInvalid</code>, error messages gain
-            proper ARIA relationships without manual <code>aria-describedby</code> wiring.
-          </p>
-          <p>
-            <strong>Built-in error handling patterns:</strong> Error states cascade through the FormControl context.
-            Inputs automatically receive <code>aria-invalid</code> attributes, labels gain appropriate IDs, and error
-            messages are properly announced to assistive technology. This reduces boilerplate significantly compared
-            to manually managing ARIA relationships.
-          </p>
-          <p>
-            <strong>Integration with form libraries:</strong> Chakra components integrate cleanly with React Hook Form,
-            Formik, and other validation libraries through standard props. You register inputs, pass validation state
-            to <code>isInvalid</code>, and render error messages conditionally. The accessibility wiring remains
-            automatic, but validation logic is yours to implement.
-          </p>
-          <p>
-            <strong>Accessibility handled by components:</strong> Input components include proper label associations,
-            focus indicators, and placeholder handling. Select components support keyboard navigation and screen reader
-            announcements. Checkbox and Radio groups manage focus and ARIA attributes for group semantics. Teams avoid
-            common accessibility pitfalls because the components enforce correct patterns.
-          </p>
-          <DemoBlock title="Form Validation (Automatic Accessibility Wiring)">
-            <SandpackEditor
-              code={`import React from 'react';
+        <h3>Form Inputs & Validation</h3>
+        <p>
+          <strong>Integrated form components:</strong> Chakra provides <code>FormControl</code>, <code>FormLabel</code>,
+          <code>FormErrorMessage</code>, and <code>FormHelperText</code> components that wire accessibility
+          attributes automatically. When you mark a FormControl as <code>isInvalid</code>, error messages gain
+          proper ARIA relationships without manual <code>aria-describedby</code> wiring.
+        </p>
+        <p>
+          <strong>Built-in error handling patterns:</strong> Error states cascade through the FormControl context.
+          Inputs automatically receive <code>aria-invalid</code> attributes, labels gain appropriate IDs, and error
+          messages are properly announced to assistive technology. This reduces boilerplate significantly compared
+          to manually managing ARIA relationships.
+        </p>
+        <p>
+          <strong>Integration with form libraries:</strong> Chakra components integrate cleanly with React Hook Form,
+          Formik, and other validation libraries through standard props. You register inputs, pass validation state
+          to <code>isInvalid</code>, and render error messages conditionally. The accessibility wiring remains
+          automatic, but validation logic is yours to implement.
+        </p>
+        <p>
+          <strong>Accessibility handled by components:</strong> Input components include proper label associations,
+          focus indicators, and placeholder handling. Select components support keyboard navigation and screen reader
+          announcements. Checkbox and Radio groups manage focus and ARIA attributes for group semantics. Teams avoid
+          common accessibility pitfalls because the components enforce correct patterns.
+        </p>
+        <DemoBlock title="Form Validation (Automatic Accessibility Wiring)">
+          <SandpackEditor
+            code={`import React from 'react';
 import { useForm } from 'react-hook-form';
 import {
   ChakraProvider,
@@ -254,50 +253,50 @@ export default function App() {
     </ChakraProvider>
   );
 }`}
-              dependencies={{
-                'react': '^18.0.0',
-                'react-dom': '^18.0.0',
-                '@chakra-ui/react': '^2.8.2',
-                '@emotion/react': '^11.11.1',
-                '@emotion/styled': '^11.11.0',
-                'framer-motion': '^10.16.4',
-                'react-hook-form': '^7.51.0',
-              }}
-            />
-          </DemoBlock>
-        </SubsectionBlock>
+            dependencies={{
+              'react': '^18.0.0',
+              'react-dom': '^18.0.0',
+              '@chakra-ui/react': '^2.8.2',
+              '@emotion/react': '^11.11.1',
+              '@emotion/styled': '^11.11.0',
+              'framer-motion': '^10.16.4',
+              'react-hook-form': '^7.51.0',
+            }}
+          />
+        </DemoBlock>
+      </SubsectionBlock>
 
-        <SubsectionBlock heading="Dialogs & Overlays">
-          <p>
-            <strong>Modal and Drawer components:</strong> Chakra provides <code>Modal</code>, <code>Drawer</code>,
-            <code>Popover</code>, and <code>AlertDialog</code> components with accessibility handled automatically.
-            Focus is trapped within the overlay, ESC key closes the modal, and scroll locking prevents background
-            interaction. You compose content using sub-components (<code>ModalHeader</code>, <code>ModalBody</code>,
-            <code>ModalFooter</code>), but the overlay mechanics are abstracted.
-          </p>
-          <p>
-            <strong>Focus trapping and scroll locking:</strong> When a Modal opens, focus moves to the first interactive
-            element inside. Tabbing is constrained to the modal content. Background scrolling is disabled. When the
-            modal closes, focus returns to the trigger element. This behavior is automatic and follows ARIA Authoring
-            Practices Guide patterns without configuration.
-          </p>
-          <p>
-            <strong>Controlled vs uncontrolled patterns:</strong> Modals support both controlled state (<code>isOpen</code>
-            and <code>onClose</code> props) and uncontrolled usage via <code>useDisclosure</code> hook. The hook provides
-            <code>isOpen</code>, <code>onOpen</code>, and <code>onClose</code> utilities, reducing boilerplate for
-            simple cases. For complex flows, you manage state yourself and pass it to the Modal.
-          </p>
-          <p>
-            <strong>Abstraction convenience vs customization limits:</strong> Chakra's overlay components are highly
-            abstracted. You configure behavior through props (<code>size</code>, <code>isCentered</code>,
-            <code>scrollBehavior</code>), but you're not controlling the underlying DOM structure or animation
-            implementation. Custom animations require working within Chakra's motion integration, and non-standard
-            layouts may require workarounds. The tradeoff is rapid implementation with guardrails vs full control
-            over markup and behavior.
-          </p>
-          <DemoBlock title="Modal (Automatic Focus & Scroll Management)">
-            <SandpackEditor
-              code={`import React from 'react';
+      <SubsectionBlock heading="Dialogs & Overlays">
+        <p>
+          <strong>Modal and Drawer components:</strong> Chakra provides <code>Modal</code>, <code>Drawer</code>,
+          <code>Popover</code>, and <code>AlertDialog</code> components with accessibility handled automatically.
+          Focus is trapped within the overlay, ESC key closes the modal, and scroll locking prevents background
+          interaction. You compose content using sub-components (<code>ModalHeader</code>, <code>ModalBody</code>,
+          <code>ModalFooter</code>), but the overlay mechanics are abstracted.
+        </p>
+        <p>
+          <strong>Focus trapping and scroll locking:</strong> When a Modal opens, focus moves to the first interactive
+          element inside. Tabbing is constrained to the modal content. Background scrolling is disabled. When the
+          modal closes, focus returns to the trigger element. This behavior is automatic and follows ARIA Authoring
+          Practices Guide patterns without configuration.
+        </p>
+        <p>
+          <strong>Controlled vs uncontrolled patterns:</strong> Modals support both controlled state (<code>isOpen</code>
+          and <code>onClose</code> props) and uncontrolled usage via <code>useDisclosure</code> hook. The hook provides
+          <code>isOpen</code>, <code>onOpen</code>, and <code>onClose</code> utilities, reducing boilerplate for
+          simple cases. For complex flows, you manage state yourself and pass it to the Modal.
+        </p>
+        <p>
+          <strong>Abstraction convenience vs customization limits:</strong> Chakra's overlay components are highly
+          abstracted. You configure behavior through props (<code>size</code>, <code>isCentered</code>,
+          <code>scrollBehavior</code>), but you're not controlling the underlying DOM structure or animation
+          implementation. Custom animations require working within Chakra's motion integration, and non-standard
+          layouts may require workarounds. The tradeoff is rapid implementation with guardrails vs full control
+          over markup and behavior.
+        </p>
+        <DemoBlock title="Modal (Automatic Focus & Scroll Management)">
+          <SandpackEditor
+            code={`import React from 'react';
 import {
   ChakraProvider,
   Button,
@@ -406,48 +405,48 @@ export default function App() {
     </ChakraProvider>
   );
 }`}
-              dependencies={{
-                'react': '^18.0.0',
-                'react-dom': '^18.0.0',
-                '@chakra-ui/react': '^2.8.2',
-                '@emotion/react': '^11.11.1',
-                '@emotion/styled': '^11.11.0',
-                'framer-motion': '^10.16.4',
-              }}
-            />
-          </DemoBlock>
-        </SubsectionBlock>
+            dependencies={{
+              'react': '^18.0.0',
+              'react-dom': '^18.0.0',
+              '@chakra-ui/react': '^2.8.2',
+              '@emotion/react': '^11.11.1',
+              '@emotion/styled': '^11.11.0',
+              'framer-motion': '^10.16.4',
+            }}
+          />
+        </DemoBlock>
+      </SubsectionBlock>
 
-        <SubsectionBlock heading="Notifications & Feedback">
-          <p>
-            <strong>Built-in Toast system:</strong> Chakra includes a global toast notification system via the
-            <code>useToast</code> hook. You call <code>toast({'{'}{'{'}title, description, status{'}'}{'}'})</code> to show
-            notifications from anywhere in your component tree. The system handles positioning, stacking,
-            auto-dismiss timing, and animations without additional setup.
-          </p>
-          <p>
-            <strong>Global notification patterns:</strong> Toasts are managed by a global provider
-            (<code>ChakraProvider</code>), so you don't wire context or state yourself. Call <code>useToast()</code>,
-            invoke the returned function, and notifications appear. This is convenient for common cases but less
-            flexible for custom notification layouts or non-standard positioning requirements.
-          </p>
-          <p>
-            <strong>Ease of use vs customization depth:</strong> The toast API is ergonomic—status variants
-            (<code>success</code>, <code>error</code>, <code>warning</code>, <code>info</code>) have automatic
-            colors and icons. Duration, position, and render function are configurable, but you're working within
-            Chakra's toast component structure. Custom notification designs (e.g., inline banners, persistent alerts)
-            require building separate components; the toast system doesn't extend to these patterns.
-          </p>
-          <p>
-            <strong>Runtime behavior and ergonomics:</strong> Toasts are rendered via React portals and styled with
-            Chakra's CSS-in-JS system. This means runtime overhead for notification rendering, but it also means
-            toasts respect your theme automatically. Accessibility is handled—toasts have proper ARIA live regions
-            for screen reader announcements. The system is productive for standard use cases, but custom feedback
-            patterns may require stepping outside the toast abstraction entirely.
-          </p>
-          <DemoBlock title="Toast System (Global Notification API)">
-            <SandpackEditor
-              code={`import React from 'react';
+      <SubsectionBlock heading="Notifications & Feedback">
+        <p>
+          <strong>Built-in Toast system:</strong> Chakra includes a global toast notification system via the
+          <code>useToast</code> hook. You call <code>toast({'{'}{'{'}title, description, status{'}'}{'}'})</code> to show
+          notifications from anywhere in your component tree. The system handles positioning, stacking,
+          auto-dismiss timing, and animations without additional setup.
+        </p>
+        <p>
+          <strong>Global notification patterns:</strong> Toasts are managed by a global provider
+          (<code>ChakraProvider</code>), so you don't wire context or state yourself. Call <code>useToast()</code>,
+          invoke the returned function, and notifications appear. This is convenient for common cases but less
+          flexible for custom notification layouts or non-standard positioning requirements.
+        </p>
+        <p>
+          <strong>Ease of use vs customization depth:</strong> The toast API is ergonomic—status variants
+          (<code>success</code>, <code>error</code>, <code>warning</code>, <code>info</code>) have automatic
+          colors and icons. Duration, position, and render function are configurable, but you're working within
+          Chakra's toast component structure. Custom notification designs (e.g., inline banners, persistent alerts)
+          require building separate components; the toast system doesn't extend to these patterns.
+        </p>
+        <p>
+          <strong>Runtime behavior and ergonomics:</strong> Toasts are rendered via React portals and styled with
+          Chakra's CSS-in-JS system. This means runtime overhead for notification rendering, but it also means
+          toasts respect your theme automatically. Accessibility is handled—toasts have proper ARIA live regions
+          for screen reader announcements. The system is productive for standard use cases, but custom feedback
+          patterns may require stepping outside the toast abstraction entirely.
+        </p>
+        <DemoBlock title="Toast System (Global Notification API)">
+          <SandpackEditor
+            code={`import React from 'react';
 import {
   ChakraProvider,
   Button,
@@ -597,18 +596,17 @@ export default function App() {
     </ChakraProvider>
   );
 }`}
-              dependencies={{
-                'react': '^18.0.0',
-                'react-dom': '^18.0.0',
-                '@chakra-ui/react': '^2.8.2',
-                '@emotion/react': '^11.11.1',
-                '@emotion/styled': '^11.11.0',
-                'framer-motion': '^10.16.4',
-              }}
-            />
-          </DemoBlock>
-        </SubsectionBlock>
-      </SectionBlock>
-    </ContentContainer>
+            dependencies={{
+              'react': '^18.0.0',
+              'react-dom': '^18.0.0',
+              '@chakra-ui/react': '^2.8.2',
+              '@emotion/react': '^11.11.1',
+              '@emotion/styled': '^11.11.0',
+              'framer-motion': '^10.16.4',
+            }}
+          />
+        </DemoBlock>
+      </SubsectionBlock>
+    </SectionBlock>
   );
 }

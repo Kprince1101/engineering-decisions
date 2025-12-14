@@ -100,7 +100,7 @@ export function DomainMenu() {
                 {!isCollapsed && (
                     <div className="mt-8 pt-6 border-t border-slate-200" style={{ minHeight: '60px' }}>
                         <ul className="space-y-1">
-                            <li style={{ paddingInlineStart: '10%' }}>
+                            <li style={{ paddingInlineStart: '5%' }}>
                                 <Link
                                     href="/about"
                                     className="block py-2 m-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
@@ -108,7 +108,7 @@ export function DomainMenu() {
                                     About this tool
                                 </Link>
                             </li>
-                            <li style={{ paddingInlineStart: '10%' }}>
+                            <li style={{ paddingInlineStart: '5%' }}>
                                 <a
                                     href="https://github.com/Kprince1101/engineering-decisions"
                                     target="_blank"
@@ -118,7 +118,7 @@ export function DomainMenu() {
                                     GitHub Repository
                                 </a>
                             </li>
-                            <li style={{ paddingInlineStart: '10%' }}>
+                            <li style={{ paddingInlineStart: '5%' }}>
                                 <a
                                     href="https://github.com/Kprince1101/engineering-decisions/issues"
                                     target="_blank"
