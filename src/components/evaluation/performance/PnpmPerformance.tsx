@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function PnpmPerformance() {
     return (
         <ContentContainer>
-            <SectionBlock title="Performance">
+            <SectionBlock title="pnpm: Performance">
                 <SubsectionBlock heading="Content-Addressable Storage">
                     <p>
                         pnpm stores files in a global store (~/.pnpm-store). If you have 100 projects using

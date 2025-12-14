@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function MantineAdvanced() {
     return (
         <ContentContainer>
-            <SectionBlock title="Advanced">
+            <SectionBlock title="Mantine: Advanced">
                 <SubsectionBlock heading="Theming & Design Tokens">
                     <p>
                         <strong>MantineProvider & Theme Overrides:</strong> Mantine uses a theme object passed to MantineProvider

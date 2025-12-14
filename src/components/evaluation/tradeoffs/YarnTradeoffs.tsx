@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function YarnTradeoffs() {
     return (
         <ContentContainer>
-            <SectionBlock title="Tradeoffs">
+            <SectionBlock title="yarn: Tradeoffs">
                 <SubsectionBlock heading="Pros">
                     <ul>
                         <li><strong>Innovation:</strong> Features like PnP and Zero-Installs push the boundary of what's possible.</li>

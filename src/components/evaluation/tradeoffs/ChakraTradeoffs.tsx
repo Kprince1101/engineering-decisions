@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function ChakraTradeoffs() {
     return (
         <ContentContainer>
-            <SectionBlock title="Tradeoffs">
+            <SectionBlock title="Chakra UI: Tradeoffs">
                 <SubsectionBlock heading="Runtime Performance & Scale">
                     <p>
                         <strong>CSS-in-JS overhead on large surfaces:</strong> Chakra's runtime styling becomes measurable

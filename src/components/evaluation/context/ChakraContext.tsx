@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function ChakraContext() {
     return (
         <ContentContainer>
-            <SectionBlock title="Context">
+            <SectionBlock title="Chakra UI: Context">
                 <SubsectionBlock heading="What Problem Chakra UI Solves">
                     <p>
                         Chakra UI addresses the accessibility and theming burden that many teams face when building

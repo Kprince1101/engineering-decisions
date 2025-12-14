@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function YarnFeatures() {
     return (
         <ContentContainer>
-            <SectionBlock title="Unique Features">
+            <SectionBlock title="yarn: Unique Features">
                 <SubsectionBlock heading="Plug'n'Play (PnP)">
                     <p>
                         Yarn Berry introduced PnP, a strategy that completely removes <code>node_modules</code>.

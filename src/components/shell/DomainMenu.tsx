@@ -34,50 +34,56 @@ export function DomainMenu() {
                 </svg>
             </button>
 
-            <div className={`py-6 ${isCollapsed ? 'px-2' : 'px-4'}`}>
-                <h2 className={`shrink-0 mb-6 text-lg font-bold uppercase tracking-wide text-slate-500 transition-opacity duration-200 ${isCollapsed ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'
-                    }`}
-                    style={{ paddingInlineStart: isCollapsed ? '0' : '8px' }}>
-                    Evaluation Domains
-                </h2>
-                <nav className="overflow-y-auto">
-                    <ul className="flex flex-col gap-2">
+            <div className={`py-6 ${isCollapsed ? 'px-2' : 'pl-12 pr-4'}`}>
+                {/* Section Label */}
+                <div className={`mb-3 transition-opacity duration-200 ${isCollapsed ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'
+                    }`}>
+                    <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400" style={{ paddingInlineStart: '5%' }}>
+                        Evaluation Domains
+                    </h2>
+                </div>
+
+                {/* Domain Navigation */}
+                <nav className="overflow-y-auto" style={{ minHeight: '420px' }}>
+                    <ul className="space-y-1">
                         {evaluationDomains.map((domain) => {
                             // Check if active based on URL
                             const isActive = pathname?.includes(domain.id);
 
                             if (!domain.enabled) {
                                 return (
-                                    <li
-                                        key={domain.id}
-                                        className={`block rounded-md text-md text-slate-400 cursor-not-allowed flex items-center ${isCollapsed ? 'justify-center px-2 py-3' : 'px-4 py-3'}`}
-                                        title="Coming Soon"
-                                    >
-                                        {isCollapsed ? (
-                                            <span className="text-xs font-bold select-none">
-                                                {domain.label.charAt(0)}
-                                            </span>
-                                        ) : (
-                                            <span style={{ paddingInlineStart: isCollapsed ? '0' : '16px' }} className="truncate">{domain.label}</span>
-                                        )}
+                                    <li key={domain.id} style={{ paddingInlineStart: '10%' }}>
+                                        <div
+                                            className={`flex items-center h-10 rounded-md text-base text-slate-400 cursor-not-allowed bg-slate-100/50 ${isCollapsed ? 'justify-center px-2' : 'pl-8 pr-3'
+                                                }`}
+
+                                            title="Coming Soon"
+                                        >
+                                            {isCollapsed ? (
+                                                <span className="text-xs font-medium select-none">
+                                                    {domain.label.charAt(0)}
+                                                </span>
+                                            ) : (
+                                                <span className="truncate">{domain.label}</span>
+                                            )}
+                                        </div>
                                     </li>
                                 );
                             }
 
                             return (
-                                <li key={domain.id}>
+                                <li key={domain.id} style={{ paddingInlineStart: '10%' }}>
                                     <Link
                                         href={`/topic/${domain.id}/${domain.defaultPage}`}
-                                        className={`block rounded-md text-md transition-colors flex items-center ${isCollapsed ? 'justify-center px-2 py-3' : 'px-4 py-3'
+                                        className={`flex items-center h-10 rounded-md text-base font-medium transition-colors ${isCollapsed ? 'justify-center px-2' : 'pl-8 pr-3'
                                             } ${isActive
-                                                ? 'font-bold bg-white text-slate-900 shadow-sm'
+                                                ? 'bg-white text-slate-900 shadow-sm ring-1 ring-slate-200'
                                                 : 'text-slate-600 hover:bg-white hover:text-slate-900'
                                             }`}
-                                        style={{ paddingInlineStart: isCollapsed ? '0' : '16px' }}
                                         title={isCollapsed ? domain.label : undefined}
                                     >
                                         {isCollapsed ? (
-                                            <span className="text-lg font-bold select-none">
+                                            <span className="text-sm font-medium select-none">
                                                 {domain.label.charAt(0)}
                                             </span>
                                         ) : (
@@ -89,20 +95,43 @@ export function DomainMenu() {
                         })}
                     </ul>
                 </nav>
-            </div>
 
-            {/* About Link - Footer (positioned at bottom of viewport) */}
-            <div
-                className={`sticky bottom-0 bg-slate-50 border-t border-slate-200 ${isCollapsed ? 'px-2' : 'px-4'} py-3 ${isCollapsed ? 'opacity-0 h-0 overflow-hidden border-t-0 py-0' : ''}`}
-            >
-                <Link
-                    href="/about"
-                    className="block text-xs text-slate-400 hover:text-slate-600 transition-colors"
-                    style={{ paddingInlineStart: isCollapsed ? '0' : '16px' }}
-                >
-                    About
-                </Link>
+                {/* Meta / About Section */}
+                {!isCollapsed && (
+                    <div className="mt-8 pt-6 border-t border-slate-200" style={{ minHeight: '60px' }}>
+                        <ul className="space-y-1">
+                            <li style={{ paddingInlineStart: '10%' }}>
+                                <Link
+                                    href="/about"
+                                    className="block py-2 m-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+                                >
+                                    About this tool
+                                </Link>
+                            </li>
+                            <li style={{ paddingInlineStart: '10%' }}>
+                                <a
+                                    href="https://github.com/Kprince1101/engineering-decisions"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block py-2 m-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+                                >
+                                    GitHub Repository
+                                </a>
+                            </li>
+                            <li style={{ paddingInlineStart: '10%' }}>
+                                <a
+                                    href="https://github.com/Kprince1101/engineering-decisions/issues"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block py-2 m-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+                                >
+                                    Report an issue
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                )}
             </div>
-        </aside>
+        </aside >
     );
 }

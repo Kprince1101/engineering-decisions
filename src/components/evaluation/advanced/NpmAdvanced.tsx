@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function NpmAdvanced() {
     return (
         <ContentContainer>
-            <SectionBlock title="Advanced Capabilities">
+            <SectionBlock title="npm: Advanced Capabilities">
                 <SubsectionBlock heading="Performance & Disk Usage">
                     <p>
                         Historically slow, npm has improved but still generally trails behind pnpm and Yarn Berry.

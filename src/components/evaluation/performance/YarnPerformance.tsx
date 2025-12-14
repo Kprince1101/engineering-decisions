@@ -2,7 +2,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 
 export function YarnPerformance() {
     return (
-        <SectionBlock title="Performance">
+        <SectionBlock title="yarn: Performance">
             <SubsectionBlock heading="Zero-Installs">
                 <p>
                     By committing the offline cache to git, Yarn allows CI jobs to start immediately without

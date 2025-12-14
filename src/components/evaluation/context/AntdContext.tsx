@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function AntdContext() {
     return (
         <ContentContainer>
-            <SectionBlock title="Context">
+            <SectionBlock title="Ant Design: Context">
                 <SubsectionBlock heading="What Problem Ant Design Solves">
                     <p>
                         Ant Design addresses the consistency and coordination problem that large enterprise teams face

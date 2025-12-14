@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function MantineContext() {
     return (
         <ContentContainer>
-            <SectionBlock title="Context">
+            <SectionBlock title="Mantine: Context">
                 <SubsectionBlock heading="What Problem Mantine Solves">
                     <p>
                         Mantine provides a comprehensive component library with built-in theming,

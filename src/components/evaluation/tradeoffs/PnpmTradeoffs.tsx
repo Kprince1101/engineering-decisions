@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function PnpmTradeoffs() {
     return (
         <ContentContainer>
-            <SectionBlock title="Tradeoffs">
+            <SectionBlock title="pnpm: Tradeoffs">
                 <SubsectionBlock heading="Pros">
                     <ul>
                         <li><strong>Speed:</strong> Consistently the fastest install times.</li>

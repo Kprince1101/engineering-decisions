@@ -2,7 +2,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 
 export function YarnComponents() {
     return (
-        <SectionBlock title="Workflow & Ergonomics">
+        <SectionBlock title="yarn: Workflow & Ergonomics">
             <SubsectionBlock heading="Install Experience">
                 <p>
                     Yarn is known for its speed and pretty output. Modern Yarn (v2+) offers "Zero-Installs"

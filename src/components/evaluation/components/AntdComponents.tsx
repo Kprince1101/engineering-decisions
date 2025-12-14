@@ -3,49 +3,49 @@ import { SandpackEditor } from '@/components/demo/SandpackEditor';
 import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/content';
 
 export function AntdComponents() {
-    return (
-        <ContentContainer>
-            <SectionBlock title="Components">
-                <SubsectionBlock heading="Tables & Data Grids">
-                    <p>
-                        <strong>Table as a first-class citizen:</strong> Ant Design's Table component is not an afterthought—it's
-                        a core primitive designed for enterprise data management. It handles sorting, filtering, pagination,
-                        row selection, expandable rows, fixed headers, and horizontal scrolling out of the box. For applications
-                        where tables are the primary interface (admin panels, CRMs, analytics dashboards), this comprehensive
-                        feature set eliminates significant custom development.
-                    </p>
-                    <p>
-                        <strong>Built-in sorting, filtering, pagination:</strong> Sorting is configured via column definitions
-                        with automatic UI indicators. Filters support multiple modes (text search, select dropdowns, date ranges)
-                        through declarative column configuration. Pagination is built in with customizable page sizes and position.
-                        These features work together seamlessly, but they also assume specific interaction patterns. Deviating from
-                        Ant Design's table model (e.g., implementing custom filter UIs or non-standard pagination) requires working
-                        around the abstraction.
-                    </p>
-                    <p>
-                        <strong>Column configuration complexity:</strong> Table columns are configured via a complex object structure
-                        defining render functions, sorters, filters, fixed positioning, and responsive behavior. This configuration
-                        is powerful but verbose. Large tables with dozens of columns result in hundreds of lines of column definitions.
-                        For teams maintaining many tables, this configuration becomes significant overhead. The abstraction optimizes
-                        for feature completeness, not brevity.
-                    </p>
-                    <p>
-                        <strong>Performance tradeoffs with large datasets:</strong> Ant Design's Table renders all rows by default,
-                        which degrades performance with large datasets (thousands of rows). Virtual scrolling exists but is opt-in
-                        and introduces additional complexity. For enterprise applications with moderate dataset sizes (hundreds of
-                        rows per page), performance is acceptable. For data-heavy dashboards with tens of thousands of rows, teams
-                        must implement virtualization or pagination carefully, or choose specialized libraries.
-                    </p>
-                    <p>
-                        <strong>Enterprise productivity vs flexibility:</strong> The Table component accelerates development for
-                        standard enterprise use cases—CRUD operations, data exports, bulk actions, inline editing. Teams building
-                        these patterns repeatedly benefit significantly. However, highly custom table UIs (non-standard cell renderers,
-                        novel interaction patterns, unique filtering UX) fight the abstraction. Ant Design assumes enterprise tables
-                        follow enterprise conventions. When they don't, customization friction is high.
-                    </p>
-                    <DemoBlock title="Table with Sorting, Filtering, Pagination">
-                        <SandpackEditor
-                            code={`import React from 'react';
+  return (
+    <ContentContainer>
+      <SectionBlock title="Ant Design: Components">
+        <SubsectionBlock heading="Tables & Data Grids">
+          <p>
+            <strong>Table as a first-class citizen:</strong> Ant Design's Table component is not an afterthought—it's
+            a core primitive designed for enterprise data management. It handles sorting, filtering, pagination,
+            row selection, expandable rows, fixed headers, and horizontal scrolling out of the box. For applications
+            where tables are the primary interface (admin panels, CRMs, analytics dashboards), this comprehensive
+            feature set eliminates significant custom development.
+          </p>
+          <p>
+            <strong>Built-in sorting, filtering, pagination:</strong> Sorting is configured via column definitions
+            with automatic UI indicators. Filters support multiple modes (text search, select dropdowns, date ranges)
+            through declarative column configuration. Pagination is built in with customizable page sizes and position.
+            These features work together seamlessly, but they also assume specific interaction patterns. Deviating from
+            Ant Design's table model (e.g., implementing custom filter UIs or non-standard pagination) requires working
+            around the abstraction.
+          </p>
+          <p>
+            <strong>Column configuration complexity:</strong> Table columns are configured via a complex object structure
+            defining render functions, sorters, filters, fixed positioning, and responsive behavior. This configuration
+            is powerful but verbose. Large tables with dozens of columns result in hundreds of lines of column definitions.
+            For teams maintaining many tables, this configuration becomes significant overhead. The abstraction optimizes
+            for feature completeness, not brevity.
+          </p>
+          <p>
+            <strong>Performance tradeoffs with large datasets:</strong> Ant Design's Table renders all rows by default,
+            which degrades performance with large datasets (thousands of rows). Virtual scrolling exists but is opt-in
+            and introduces additional complexity. For enterprise applications with moderate dataset sizes (hundreds of
+            rows per page), performance is acceptable. For data-heavy dashboards with tens of thousands of rows, teams
+            must implement virtualization or pagination carefully, or choose specialized libraries.
+          </p>
+          <p>
+            <strong>Enterprise productivity vs flexibility:</strong> The Table component accelerates development for
+            standard enterprise use cases—CRUD operations, data exports, bulk actions, inline editing. Teams building
+            these patterns repeatedly benefit significantly. However, highly custom table UIs (non-standard cell renderers,
+            novel interaction patterns, unique filtering UX) fight the abstraction. Ant Design assumes enterprise tables
+            follow enterprise conventions. When they don't, customization friction is high.
+          </p>
+          <DemoBlock title="Table with Sorting, Filtering, Pagination">
+            <SandpackEditor
+              code={`import React from 'react';
 import { Table, ConfigProvider } from 'antd';
 import 'antd/dist/reset.css';
 
@@ -171,54 +171,54 @@ export default function App() {
     </ConfigProvider>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                                'antd': '^5.12.0',
-                            }}
-                        />
-                    </DemoBlock>
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+                'antd': '^5.12.0',
+              }}
+            />
+          </DemoBlock>
 
-                    <h3>Forms & Validation</h3>
-                    <p>
-                        <strong>Form as a stateful abstraction:</strong> Ant Design's Form component is a comprehensive stateful
-                        abstraction managing field values, validation states, error messages, and submission logic. It wraps form
-                        state management, reducing boilerplate compared to manual state handling or integrating external form libraries.
-                        For teams building many forms, this abstraction accelerates delivery. For teams with complex form requirements
-                        or existing form infrastructure, it introduces an additional layer to manage.
-                    </p>
-                    <p>
-                        <strong>Declarative validation rules:</strong> Validation is defined via rules arrays on form items
-                        (<code>required</code>, <code>pattern</code>, <code>min</code>, <code>max</code>, custom validators).
-                        This declarative approach is readable and consistent across forms. Error messages are automatically displayed
-                        below fields, styled according to Ant Design's visual language. For standard validation (required fields,
-                        email patterns, length constraints), this works well. For complex cross-field validation or conditional
-                        rules, the declarative model becomes limiting, requiring workarounds.
-                    </p>
-                    <p>
-                        <strong>Layout control (horizontal, vertical, inline):</strong> Forms support layout modes controlling
-                        label-field alignment automatically. Horizontal mode aligns labels left of fields with configurable label
-                        width. Vertical mode stacks labels above fields. Inline mode renders fields side-by-side. These modes handle
-                        common enterprise form layouts without custom CSS, but they also assume specific layout patterns. Forms
-                        requiring custom spacing, asymmetric layouts, or non-standard alignment fight the abstraction.
-                    </p>
-                    <p>
-                        <strong>Automatic label/field alignment:</strong> Ant Design's Form handles label alignment, error message
-                        positioning, and required indicators automatically based on layout mode. This ensures visual consistency
-                        across forms without manual styling. For large applications with hundreds of forms, this consistency is
-                        valuable. However, it also means forms look recognizably Ant Design. Teams seeking unique form aesthetics
-                        must override default styling extensively.
-                    </p>
-                    <p>
-                        <strong>Strong defaults vs customization friction:</strong> Ant Design's Form excels when your requirements
-                        align with its defaults—enterprise forms with standard validation, predictable layouts, and conventional
-                        field types. When requirements diverge—multi-step wizards with complex state, forms with dynamic field
-                        generation, or non-standard validation UX—the abstraction introduces friction. Teams spend time working
-                        around Form's opinions rather than benefiting from its automation.
-                    </p>
-                    <DemoBlock title="Form with Declarative Validation">
-                        <SandpackEditor
-                            code={`import React from 'react';
+          <h3>Forms & Validation</h3>
+          <p>
+            <strong>Form as a stateful abstraction:</strong> Ant Design's Form component is a comprehensive stateful
+            abstraction managing field values, validation states, error messages, and submission logic. It wraps form
+            state management, reducing boilerplate compared to manual state handling or integrating external form libraries.
+            For teams building many forms, this abstraction accelerates delivery. For teams with complex form requirements
+            or existing form infrastructure, it introduces an additional layer to manage.
+          </p>
+          <p>
+            <strong>Declarative validation rules:</strong> Validation is defined via rules arrays on form items
+            (<code>required</code>, <code>pattern</code>, <code>min</code>, <code>max</code>, custom validators).
+            This declarative approach is readable and consistent across forms. Error messages are automatically displayed
+            below fields, styled according to Ant Design's visual language. For standard validation (required fields,
+            email patterns, length constraints), this works well. For complex cross-field validation or conditional
+            rules, the declarative model becomes limiting, requiring workarounds.
+          </p>
+          <p>
+            <strong>Layout control (horizontal, vertical, inline):</strong> Forms support layout modes controlling
+            label-field alignment automatically. Horizontal mode aligns labels left of fields with configurable label
+            width. Vertical mode stacks labels above fields. Inline mode renders fields side-by-side. These modes handle
+            common enterprise form layouts without custom CSS, but they also assume specific layout patterns. Forms
+            requiring custom spacing, asymmetric layouts, or non-standard alignment fight the abstraction.
+          </p>
+          <p>
+            <strong>Automatic label/field alignment:</strong> Ant Design's Form handles label alignment, error message
+            positioning, and required indicators automatically based on layout mode. This ensures visual consistency
+            across forms without manual styling. For large applications with hundreds of forms, this consistency is
+            valuable. However, it also means forms look recognizably Ant Design. Teams seeking unique form aesthetics
+            must override default styling extensively.
+          </p>
+          <p>
+            <strong>Strong defaults vs customization friction:</strong> Ant Design's Form excels when your requirements
+            align with its defaults—enterprise forms with standard validation, predictable layouts, and conventional
+            field types. When requirements diverge—multi-step wizards with complex state, forms with dynamic field
+            generation, or non-standard validation UX—the abstraction introduces friction. Teams spend time working
+            around Form's opinions rather than benefiting from its automation.
+          </p>
+          <DemoBlock title="Form with Declarative Validation">
+            <SandpackEditor
+              code={`import React from 'react';
 import { Form, Input, Select, Button, ConfigProvider, message } from 'antd';
 import 'antd/dist/reset.css';
 
@@ -336,97 +336,97 @@ export default function App() {
     </ConfigProvider>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                                'antd': '^5.12.0',
-                            }}
-                        />
-                    </DemoBlock>
-                </SubsectionBlock>
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+                'antd': '^5.12.0',
+              }}
+            />
+          </DemoBlock>
+        </SubsectionBlock>
 
-                <SubsectionBlock heading="Layout & Navigation">
-                    <p>
-                        <strong>Opinionated page scaffolding:</strong> Ant Design provides Layout, Sider, Header, Footer, and Content
-                        components for scaffolding application structure. These components assume specific patterns—top navigation with
-                        optional side menu, collapsible sidebars, fixed headers. For enterprise applications following these conventions,
-                        Layout components eliminate layout boilerplate. For applications with non-standard page structures (split-screen
-                        layouts, dashboard grids, unconventional navigation), the components provide little value.
-                    </p>
-                    <p>
-                        <strong>Menu component for navigation:</strong> Ant Design's Menu handles top navigation, side navigation,
-                        and dropdown menus with built-in expand/collapse, icon support, and active state management. Menu configuration
-                        is declarative via nested item definitions. This works well for applications with stable, hierarchical navigation.
-                        For applications with dynamic menus, permission-based navigation, or context-dependent menu items, the declarative
-                        model requires programmatic generation and state management that the abstraction doesn't simplify.
-                    </p>
-                    <p>
-                        <strong>Breadcrumb and Tabs for sub-navigation:</strong> Breadcrumb provides hierarchical navigation breadcrumbs
-                        with automatic separators and routing integration. Tabs manages tabbed interfaces with controlled or uncontrolled
-                        state. These components assume enterprise navigation patterns—breadcrumbs for deep hierarchies, tabs for contextual
-                        views. They handle these use cases well but offer little for applications with novel navigation requirements.
-                    </p>
-                    <p>
-                        <strong>Predictable UX for enterprise users:</strong> Ant Design's Layout and Navigation components enforce
-                        consistency. Users familiar with one Ant Design application transfer knowledge to others. Menu behavior, breadcrumb
-                        styling, and layout structure are predictable. For enterprises managing many internal tools, this predictability
-                        reduces training and support burden. For consumer products seeking differentiation, this predictability is
-                        homogeneity.
-                    </p>
-                    <p>
-                        <strong>Limited freedom for bespoke layouts:</strong> Ant Design's layout primitives optimize for specific
-                        patterns. Applications requiring unconventional page structures—asymmetric grids, magazine-style layouts,
-                        dashboard mosaics—find minimal support. Teams either accept Ant Design's layout conventions or abandon the
-                        Layout components entirely and build custom structures, losing the consistency benefits.
-                    </p>
+        <SubsectionBlock heading="Layout & Navigation">
+          <p>
+            <strong>Opinionated page scaffolding:</strong> Ant Design provides Layout, Sider, Header, Footer, and Content
+            components for scaffolding application structure. These components assume specific patterns—top navigation with
+            optional side menu, collapsible sidebars, fixed headers. For enterprise applications following these conventions,
+            Layout components eliminate layout boilerplate. For applications with non-standard page structures (split-screen
+            layouts, dashboard grids, unconventional navigation), the components provide little value.
+          </p>
+          <p>
+            <strong>Menu component for navigation:</strong> Ant Design's Menu handles top navigation, side navigation,
+            and dropdown menus with built-in expand/collapse, icon support, and active state management. Menu configuration
+            is declarative via nested item definitions. This works well for applications with stable, hierarchical navigation.
+            For applications with dynamic menus, permission-based navigation, or context-dependent menu items, the declarative
+            model requires programmatic generation and state management that the abstraction doesn't simplify.
+          </p>
+          <p>
+            <strong>Breadcrumb and Tabs for sub-navigation:</strong> Breadcrumb provides hierarchical navigation breadcrumbs
+            with automatic separators and routing integration. Tabs manages tabbed interfaces with controlled or uncontrolled
+            state. These components assume enterprise navigation patterns—breadcrumbs for deep hierarchies, tabs for contextual
+            views. They handle these use cases well but offer little for applications with novel navigation requirements.
+          </p>
+          <p>
+            <strong>Predictable UX for enterprise users:</strong> Ant Design's Layout and Navigation components enforce
+            consistency. Users familiar with one Ant Design application transfer knowledge to others. Menu behavior, breadcrumb
+            styling, and layout structure are predictable. For enterprises managing many internal tools, this predictability
+            reduces training and support burden. For consumer products seeking differentiation, this predictability is
+            homogeneity.
+          </p>
+          <p>
+            <strong>Limited freedom for bespoke layouts:</strong> Ant Design's layout primitives optimize for specific
+            patterns. Applications requiring unconventional page structures—asymmetric grids, magazine-style layouts,
+            dashboard mosaics—find minimal support. Teams either accept Ant Design's layout conventions or abandon the
+            Layout components entirely and build custom structures, losing the consistency benefits.
+          </p>
 
-                    <h3>Modals, Drawers & Feedback</h3>
-                    <p>
-                        <strong>Imperative APIs for global patterns:</strong> Ant Design's Modal, Drawer, Notification, and Message
-                        components offer imperative APIs (<code>Modal.confirm()</code>, <code>message.success()</code>) for triggering
-                        UI globally. This aligns with enterprise workflows where feedback and confirmations are triggered from business
-                        logic, not just user interactions. Teams can show notifications from API response handlers, trigger modals from
-                        validation failures, or display messages from background processes without managing component state manually.
-                    </p>
-                    <p>
-                        <strong>Modal for confirmations and workflows:</strong> Modal supports both declarative (JSX) and imperative
-                        (function call) usage. The imperative API is particularly valuable for confirmation dialogs, alerts, and
-                        decision prompts triggered from logic rather than UI. <code>Modal.confirm()</code> returns a promise, enabling
-                        await-based workflows. This pattern is common in enterprise applications and Ant Design optimizes for it.
-                        However, the imperative API reduces composability—modals triggered this way can't easily accept custom React
-                        components without workarounds.
-                    </p>
-                    <p>
-                        <strong>Drawer for side panels and details:</strong> Drawer provides slide-out panels for displaying details,
-                        forms, or contextual information without navigating away. It supports placement (left, right, top, bottom) and
-                        nested drawers for multi-level navigation. For applications with detail views or editing workflows that shouldn't
-                        interrupt the main context, Drawer is productive. The abstraction handles overlay, scroll locking, and animations
-                        automatically, but customization of animations or non-standard drawer behaviors is limited.
-                    </p>
-                    <p>
-                        <strong>Notification and Message for feedback:</strong> Notification displays timed, dismissible alerts in a
-                        fixed corner position. Message displays brief, centered feedback that auto-dismisses. Both use imperative APIs
-                        (<code>notification.open()</code>, <code>message.info()</code>). For global feedback patterns, this is ergonomic—
-                        trigger notifications from anywhere without managing component trees. The tradeoff is reduced control over positioning,
-                        stacking, and custom layouts. Notifications follow Ant Design's visual language and positioning conventions.
-                    </p>
-                    <p>
-                        <strong>Consistency across the app:</strong> Because Modal, Drawer, Notification, and Message are globally
-                        configured, their behavior and appearance are consistent application-wide. Confirmation dialogs use the same
-                        button styles. Notifications appear in the same position. Messages have consistent timing. For enterprise
-                        applications where predictable UX reduces user confusion, this consistency is valuable. For applications
-                        requiring context-specific feedback patterns, this global uniformity is limiting.
-                    </p>
-                    <p>
-                        <strong>Ease of use vs composability:</strong> Ant Design's imperative APIs prioritize ease of use over
-                        composability. Triggering a modal or notification with a single function call is fast. The cost is reduced
-                        flexibility—imperative UIs are harder to test, harder to compose with other React patterns, and harder to
-                        customize deeply. Teams building standard enterprise workflows benefit. Teams needing highly dynamic or
-                        composable feedback UIs find the imperative model constraining.
-                    </p>
-                    <DemoBlock title="Modal & Drawer (Imperative Workflow Patterns)">
-                        <SandpackEditor
-                            code={`import React, { useState } from 'react';
+          <h3>Modals, Drawers & Feedback</h3>
+          <p>
+            <strong>Imperative APIs for global patterns:</strong> Ant Design's Modal, Drawer, Notification, and Message
+            components offer imperative APIs (<code>Modal.confirm()</code>, <code>message.success()</code>) for triggering
+            UI globally. This aligns with enterprise workflows where feedback and confirmations are triggered from business
+            logic, not just user interactions. Teams can show notifications from API response handlers, trigger modals from
+            validation failures, or display messages from background processes without managing component state manually.
+          </p>
+          <p>
+            <strong>Modal for confirmations and workflows:</strong> Modal supports both declarative (JSX) and imperative
+            (function call) usage. The imperative API is particularly valuable for confirmation dialogs, alerts, and
+            decision prompts triggered from logic rather than UI. <code>Modal.confirm()</code> returns a promise, enabling
+            await-based workflows. This pattern is common in enterprise applications and Ant Design optimizes for it.
+            However, the imperative API reduces composability—modals triggered this way can't easily accept custom React
+            components without workarounds.
+          </p>
+          <p>
+            <strong>Drawer for side panels and details:</strong> Drawer provides slide-out panels for displaying details,
+            forms, or contextual information without navigating away. It supports placement (left, right, top, bottom) and
+            nested drawers for multi-level navigation. For applications with detail views or editing workflows that shouldn't
+            interrupt the main context, Drawer is productive. The abstraction handles overlay, scroll locking, and animations
+            automatically, but customization of animations or non-standard drawer behaviors is limited.
+          </p>
+          <p>
+            <strong>Notification and Message for feedback:</strong> Notification displays timed, dismissible alerts in a
+            fixed corner position. Message displays brief, centered feedback that auto-dismisses. Both use imperative APIs
+            (<code>notification.open()</code>, <code>message.info()</code>). For global feedback patterns, this is ergonomic—
+            trigger notifications from anywhere without managing component trees. The tradeoff is reduced control over positioning,
+            stacking, and custom layouts. Notifications follow Ant Design's visual language and positioning conventions.
+          </p>
+          <p>
+            <strong>Consistency across the app:</strong> Because Modal, Drawer, Notification, and Message are globally
+            configured, their behavior and appearance are consistent application-wide. Confirmation dialogs use the same
+            button styles. Notifications appear in the same position. Messages have consistent timing. For enterprise
+            applications where predictable UX reduces user confusion, this consistency is valuable. For applications
+            requiring context-specific feedback patterns, this global uniformity is limiting.
+          </p>
+          <p>
+            <strong>Ease of use vs composability:</strong> Ant Design's imperative APIs prioritize ease of use over
+            composability. Triggering a modal or notification with a single function call is fast. The cost is reduced
+            flexibility—imperative UIs are harder to test, harder to compose with other React patterns, and harder to
+            customize deeply. Teams building standard enterprise workflows benefit. Teams needing highly dynamic or
+            composable feedback UIs find the imperative model constraining.
+          </p>
+          <DemoBlock title="Modal & Drawer (Imperative Workflow Patterns)">
+            <SandpackEditor
+              code={`import React, { useState } from 'react';
 import { Modal, Drawer, Button, ConfigProvider, Space, Descriptions } from 'antd';
 import 'antd/dist/reset.css';
 
@@ -573,17 +573,17 @@ export default function App() {
     </ConfigProvider>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                                'antd': '^5.12.0',
-                            }}
-                        />
-                    </DemoBlock>
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+                'antd': '^5.12.0',
+              }}
+            />
+          </DemoBlock>
 
-                    <DemoBlock title="Notifications & Messages (Global Feedback APIs)">
-                        <SandpackEditor
-                            code={`import React from 'react';
+          <DemoBlock title="Notifications & Messages (Global Feedback APIs)">
+            <SandpackEditor
+              code={`import React from 'react';
 import { Button, ConfigProvider, Space, notification, message } from 'antd';
 import 'antd/dist/reset.css';
 
@@ -743,15 +743,15 @@ export default function App() {
     </ConfigProvider>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                                'antd': '^5.12.0',
-                            }}
-                        />
-                    </DemoBlock>
-                </SubsectionBlock>
-            </SectionBlock>
-        </ContentContainer>
-    );
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+                'antd': '^5.12.0',
+              }}
+            />
+          </DemoBlock>
+        </SubsectionBlock>
+      </SectionBlock>
+    </ContentContainer>
+  );
 }

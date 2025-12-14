@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function PnpmContext() {
     return (
         <ContentContainer>
-            <SectionBlock title="Context">
+            <SectionBlock title="pnpm: Context">
                 <SubsectionBlock heading="What Problem pnpm Solves">
                     <p>
                         pnpm (Performant npm) solves the disk space efficiency and "phantom dependency" problems

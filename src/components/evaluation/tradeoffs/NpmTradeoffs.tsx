@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function NpmTradeoffs() {
     return (
         <ContentContainer>
-            <SectionBlock title="Tradeoffs">
+            <SectionBlock title="npm: Tradeoffs">
                 <SubsectionBlock heading="Pros">
                     <ul>
                         <li><strong>Ubiquity:</strong> Pre-installed with Node.js; zero setup required.</li>

@@ -2,7 +2,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 
 export function YarnContext() {
     return (
-        <SectionBlock title="Context">
+        <SectionBlock title="yarn: Context">
             <SubsectionBlock heading="What Problem Yarn Solves">
                 <p>
                     Yarn was created by Facebook (Meta) to address critical performance, security, and

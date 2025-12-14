@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function PnpmAdvanced() {
     return (
         <ContentContainer>
-            <SectionBlock title="Advanced Capabilities">
+            <SectionBlock title="pnpm: Advanced Capabilities">
                 <SubsectionBlock heading="Content-Addressable Storage">
                     <p>
                         pnpm stores files in a global store (~/.pnpm-store). If you have 100 projects using

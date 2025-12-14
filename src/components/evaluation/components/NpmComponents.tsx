@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function NpmComponents() {
     return (
         <ContentContainer>
-            <SectionBlock title="Workflow & Ergonomics">
+            <SectionBlock title="npm: Workflow & Ergonomics">
                 <SubsectionBlock heading="Install Experience">
                     <p>
                         <code>npm install</code> is the standard command. Since v7, it automatically installs

@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function NpmContext() {
     return (
         <ContentContainer>
-            <SectionBlock title="Context">
+            <SectionBlock title="npm: Context">
                 <SubsectionBlock heading="What Problem npm Solves">
                     <p>
                         npm (Node Package Manager) is the default package manager for the Node.js ecosystem.

@@ -29,8 +29,7 @@ export default function AboutPage() {
                                     </h2>
 
                                     <p className="text-slate-700 leading-relaxed">
-                                        Engineering decisions rarely fail because of missing information.
-                                        They fail because tradeoffs are implicit, unevenly understood, or discussed too late.
+                                        Engineering decisions mostly fail because tradeoffs are implicit, unevenly understood, or discussed too late.
                                     </p>
 
                                     <p className="mt-4 text-slate-700 leading-relaxed">

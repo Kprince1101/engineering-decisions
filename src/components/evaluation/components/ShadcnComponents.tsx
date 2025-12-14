@@ -3,29 +3,29 @@ import { SandpackEditor } from '@/components/demo/SandpackEditor';
 import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/content';
 
 export function ShadcnComponents() {
-    return (
-        <ContentContainer>
-            <SectionBlock title="Components">
-                <SubsectionBlock heading="Buttons & Interactive Elements">
-                    <p>
-                        <strong>What you get:</strong> A Button component built on headless primitives, styled with Tailwind utilities.
-                        The component lives in your codebase (<code>components/ui/button.tsx</code>) and uses class-variance-authority
-                        for variant logic. You own the file completely.
-                    </p>
-                    <p>
-                        <strong>Your responsibility:</strong> All variants (primary, secondary, outline, ghost), size options, and
-                        state styles (hover, focus, active, disabled) are defined in Tailwind classes you maintain. Want a new variant?
-                        Add it to the cva config. Want custom hover behavior? Modify the Tailwind classes. There's no abstraction to
-                        work around—just code you control.
-                    </p>
-                    <p>
-                        <strong>Flexibility vs verbosity:</strong> You have complete control over markup and styling. The tradeoff
-                        is explicitness. Loading states, icon positioning, and polymorphic rendering aren't built in—you add them
-                        if needed. This is intentional. You build exactly what your design system requires, no more, no less.
-                    </p>
-                    <DemoBlock title="Button Variants (Owned Code)">
-                        <SandpackEditor
-                            code={`import React from 'react';
+  return (
+    <ContentContainer>
+      <SectionBlock title="shadcn/ui: Components">
+        <SubsectionBlock heading="Buttons & Interactive Elements">
+          <p>
+            <strong>What you get:</strong> A Button component built on headless primitives, styled with Tailwind utilities.
+            The component lives in your codebase (<code>components/ui/button.tsx</code>) and uses class-variance-authority
+            for variant logic. You own the file completely.
+          </p>
+          <p>
+            <strong>Your responsibility:</strong> All variants (primary, secondary, outline, ghost), size options, and
+            state styles (hover, focus, active, disabled) are defined in Tailwind classes you maintain. Want a new variant?
+            Add it to the cva config. Want custom hover behavior? Modify the Tailwind classes. There's no abstraction to
+            work around—just code you control.
+          </p>
+          <p>
+            <strong>Flexibility vs verbosity:</strong> You have complete control over markup and styling. The tradeoff
+            is explicitness. Loading states, icon positioning, and polymorphic rendering aren't built in—you add them
+            if needed. This is intentional. You build exactly what your design system requires, no more, no less.
+          </p>
+          <DemoBlock title="Button Variants (Owned Code)">
+            <SandpackEditor
+              code={`import React from 'react';
 import './styles.css';
 
 // You own this Button component - it lives in your codebase
@@ -69,39 +69,39 @@ export default function App() {
     </div>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                            }}
-                        />
-                    </DemoBlock>
-                </SubsectionBlock>
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+              }}
+            />
+          </DemoBlock>
+        </SubsectionBlock>
 
-                <SubsectionBlock heading="Form Inputs & Validation">
-                    <p>
-                        <strong>What you get:</strong> Input primitives (Input, Textarea, Select) with basic markup and Tailwind styling.
-                        These are building blocks, not form solutions. There's no built-in validation, error handling, or form state
-                        management. That's your job.
-                    </p>
-                    <p>
-                        <strong>Integration pattern:</strong> shadcn/ui components integrate with React Hook Form, Formik, or any
-                        form library through standard props (<code>value</code>, <code>onChange</code>, <code>onBlur</code>). Error
-                        states are wired manually—you pass error messages and conditional styling. This is more verbose than libraries
-                        with built-in form utilities, but it's also more explicit and adaptable.
-                    </p>
-                    <p>
-                        <strong>Explicit control:</strong> You control the entire markup tree. Label positioning, error message
-                        placement, help text, required indicators—all of this is in code you own. Accessibility is your responsibility.
-                        Radix provides primitives for complex inputs (Select, RadioGroup), but wiring them into forms is manual work.
-                    </p>
-                    <p>
-                        <strong>What this means:</strong> Teams comfortable with React Hook Form or similar tools will find this
-                        familiar. Teams expecting a batteries-included form solution will find this tedious. There's no useForm hook,
-                        no automatic validation—just components you compose yourself.
-                    </p>
-                    <DemoBlock title="Form Input Validation (Manual Wiring)">
-                        <SandpackEditor
-                            code={`import React from 'react';
+        <SubsectionBlock heading="Form Inputs & Validation">
+          <p>
+            <strong>What you get:</strong> Input primitives (Input, Textarea, Select) with basic markup and Tailwind styling.
+            These are building blocks, not form solutions. There's no built-in validation, error handling, or form state
+            management. That's your job.
+          </p>
+          <p>
+            <strong>Integration pattern:</strong> shadcn/ui components integrate with React Hook Form, Formik, or any
+            form library through standard props (<code>value</code>, <code>onChange</code>, <code>onBlur</code>). Error
+            states are wired manually—you pass error messages and conditional styling. This is more verbose than libraries
+            with built-in form utilities, but it's also more explicit and adaptable.
+          </p>
+          <p>
+            <strong>Explicit control:</strong> You control the entire markup tree. Label positioning, error message
+            placement, help text, required indicators—all of this is in code you own. Accessibility is your responsibility.
+            Radix provides primitives for complex inputs (Select, RadioGroup), but wiring them into forms is manual work.
+          </p>
+          <p>
+            <strong>What this means:</strong> Teams comfortable with React Hook Form or similar tools will find this
+            familiar. Teams expecting a batteries-included form solution will find this tedious. There's no useForm hook,
+            no automatic validation—just components you compose yourself.
+          </p>
+          <DemoBlock title="Form Input Validation (Manual Wiring)">
+            <SandpackEditor
+              code={`import React from 'react';
 import { useForm } from 'react-hook-form';
 import './styles.css';
 
@@ -193,39 +193,39 @@ export default function App() {
     </form>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                                'react-hook-form': '^7.51.0',
-                            }}
-                        />
-                    </DemoBlock>
-                </SubsectionBlock>
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+                'react-hook-form': '^7.51.0',
+              }}
+            />
+          </DemoBlock>
+        </SubsectionBlock>
 
-                <SubsectionBlock heading="Dialogs, Sheets & Overlays">
-                    <p>
-                        <strong>What you get:</strong> A Dialog component built on Radix's Dialog primitive. Radix handles focus
-                        trapping, ESC key behavior, and ARIA attributes. You handle layout, animation, and styling via Tailwind.
-                    </p>
-                    <p>
-                        <strong>Composition-first construction:</strong> Dialogs in shadcn/ui are composed from sub-components:
-                        DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter. You arrange these
-                        however your design requires. Want a centered modal? Configure Tailwind classes. Want a slide-in sheet?
-                        Adjust positioning and add transitions. The structure is yours.
-                    </p>
-                    <p>
-                        <strong>Power and verbosity:</strong> This composition model is powerful but verbose. Opening a modal requires
-                        managing <code>open</code> state yourself. Animations are CSS transitions you define. Backdrop styling is
-                        Tailwind classes you control. There's no <code>Modal.show()</code> API—you build the behavior you need.
-                    </p>
-                    <p>
-                        <strong>Intentionality over convenience:</strong> Every choice is explicit. This makes the code longer but
-                        also more maintainable. When you need to debug focus behavior or adjust animation timing, you're editing
-                        code you understand, not configuring props on a black-box component.
-                    </p>
-                    <DemoBlock title="Dialog Composition (Radix + Owned Styling)">
-                        <SandpackEditor
-                            code={`import React, { useState } from 'react';
+        <SubsectionBlock heading="Dialogs, Sheets & Overlays">
+          <p>
+            <strong>What you get:</strong> A Dialog component built on Radix's Dialog primitive. Radix handles focus
+            trapping, ESC key behavior, and ARIA attributes. You handle layout, animation, and styling via Tailwind.
+          </p>
+          <p>
+            <strong>Composition-first construction:</strong> Dialogs in shadcn/ui are composed from sub-components:
+            DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter. You arrange these
+            however your design requires. Want a centered modal? Configure Tailwind classes. Want a slide-in sheet?
+            Adjust positioning and add transitions. The structure is yours.
+          </p>
+          <p>
+            <strong>Power and verbosity:</strong> This composition model is powerful but verbose. Opening a modal requires
+            managing <code>open</code> state yourself. Animations are CSS transitions you define. Backdrop styling is
+            Tailwind classes you control. There's no <code>Modal.show()</code> API—you build the behavior you need.
+          </p>
+          <p>
+            <strong>Intentionality over convenience:</strong> Every choice is explicit. This makes the code longer but
+            also more maintainable. When you need to debug focus behavior or adjust animation timing, you're editing
+            code you understand, not configuring props on a black-box component.
+          </p>
+          <DemoBlock title="Dialog Composition (Radix + Owned Styling)">
+            <SandpackEditor
+              code={`import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import './styles.css';
 
@@ -319,40 +319,40 @@ export default function App() {
     </div>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                                '@radix-ui/react-dialog': '^1.0.5',
-                            }}
-                        />
-                    </DemoBlock>
-                </SubsectionBlock>
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+                '@radix-ui/react-dialog': '^1.0.5',
+              }}
+            />
+          </DemoBlock>
+        </SubsectionBlock>
 
-                <SubsectionBlock heading="Notifications & Feedback">
-                    <p>
-                        <strong>What you don't get:</strong> shadcn/ui does not ship a global notification system. There's no
-                        <code>notifications.show()</code> or toast provider. This is intentional. Notifications are app-specific
-                        UI with unique positioning, stacking, and timing requirements. shadcn/ui gives you the primitives; you
-                        build the pattern.
-                    </p>
-                    <p>
-                        <strong>Common implementation pattern:</strong> Teams typically create a Toast component using Radix's
-                        Toast primitive, wire it to a context provider, and expose an imperative API. This is 50-150 lines of
-                        code depending on requirements. You own it, maintain it, and evolve it with your app.
-                    </p>
-                    <p>
-                        <strong>Tradeoff between control and convenience:</strong> Libraries with built-in notification systems
-                        save you this work but lock you into their API and styling decisions. shadcn/ui assumes you prefer control.
-                        If you need notifications, you build them. If you don't, you avoid the bundle weight.
-                    </p>
-                    <p>
-                        <strong>App-specific feedback patterns:</strong> This approach encourages teams to design feedback mechanisms
-                        that fit their product. Inline alerts, banner notifications, toast stacks—whatever your design requires, you
-                        implement it directly. No abstraction to route around.
-                    </p>
-                    <DemoBlock title="Custom Toast System (No Built-in Notification API)">
-                        <SandpackEditor
-                            code={`import React, { useState } from 'react';
+        <SubsectionBlock heading="Notifications & Feedback">
+          <p>
+            <strong>What you don't get:</strong> shadcn/ui does not ship a global notification system. There's no
+            <code>notifications.show()</code> or toast provider. This is intentional. Notifications are app-specific
+            UI with unique positioning, stacking, and timing requirements. shadcn/ui gives you the primitives; you
+            build the pattern.
+          </p>
+          <p>
+            <strong>Common implementation pattern:</strong> Teams typically create a Toast component using Radix's
+            Toast primitive, wire it to a context provider, and expose an imperative API. This is 50-150 lines of
+            code depending on requirements. You own it, maintain it, and evolve it with your app.
+          </p>
+          <p>
+            <strong>Tradeoff between control and convenience:</strong> Libraries with built-in notification systems
+            save you this work but lock you into their API and styling decisions. shadcn/ui assumes you prefer control.
+            If you need notifications, you build them. If you don't, you avoid the bundle weight.
+          </p>
+          <p>
+            <strong>App-specific feedback patterns:</strong> This approach encourages teams to design feedback mechanisms
+            that fit their product. Inline alerts, banner notifications, toast stacks—whatever your design requires, you
+            implement it directly. No abstraction to route around.
+          </p>
+          <DemoBlock title="Custom Toast System (No Built-in Notification API)">
+            <SandpackEditor
+              code={`import React, { useState } from 'react';
 import './styles.css';
 
 // There is no built-in global notification system in shadcn/ui
@@ -460,14 +460,14 @@ export default function App() {
     </div>
   );
 }`}
-                            dependencies={{
-                                'react': '^18.0.0',
-                                'react-dom': '^18.0.0',
-                            }}
-                        />
-                    </DemoBlock>
-                </SubsectionBlock>
-            </SectionBlock>
-        </ContentContainer>
-    );
+              dependencies={{
+                'react': '^18.0.0',
+                'react-dom': '^18.0.0',
+              }}
+            />
+          </DemoBlock>
+        </SubsectionBlock>
+      </SectionBlock>
+    </ContentContainer>
+  );
 }

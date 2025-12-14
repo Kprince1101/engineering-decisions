@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function PnpmFeatures() {
     return (
         <ContentContainer>
-            <SectionBlock title="Unique Features">
+            <SectionBlock title="pnpm: Unique Features">
                 <SubsectionBlock heading="Symlinked node_modules">
                     <p>
                         pnpm creates a non-flat <code>node_modules</code> structure using symlinks. This

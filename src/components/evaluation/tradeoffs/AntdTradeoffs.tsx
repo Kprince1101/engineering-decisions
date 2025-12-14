@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function AntdTradeoffs() {
     return (
         <ContentContainer>
-            <SectionBlock title="Tradeoffs">
+            <SectionBlock title="Ant Design: Tradeoffs">
                 <SubsectionBlock heading="Performance & Payload Risk">
                     <p>
                         <strong>Heavy initial load for consumer applications:</strong> Ant Design's bundle size is substantial—

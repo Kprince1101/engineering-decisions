@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function NpmFeatures() {
     return (
         <ContentContainer>
-            <SectionBlock title="Unique Features">
+            <SectionBlock title="npm: Unique Features">
                 <SubsectionBlock heading="Security Audits">
                     <p>
                         npm includes <code>npm audit</code> which runs automatically on install. While helpful,

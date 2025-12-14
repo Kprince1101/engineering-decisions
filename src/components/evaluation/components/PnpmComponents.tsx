@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function PnpmComponents() {
     return (
         <ContentContainer>
-            <SectionBlock title="Workflow & Ergonomics">
+            <SectionBlock title="pnpm: Workflow & Ergonomics">
                 <SubsectionBlock heading="Install Experience">
                     <p>
                         pnpm is extremely fast, often outperforming both npm and Yarn. It uses a global store,

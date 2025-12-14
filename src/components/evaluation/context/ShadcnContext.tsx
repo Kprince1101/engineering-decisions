@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function ShadcnContext() {
     return (
         <ContentContainer>
-            <SectionBlock title="Context">
+            <SectionBlock title="shadcn/ui: Context">
                 <SubsectionBlock heading="What Problem shadcn/ui Solves">
                     <p>
                         shadcn/ui addresses the ownership problem inherent in component libraries. Instead of

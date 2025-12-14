@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function AntdAdvanced() {
     return (
         <ContentContainer>
-            <SectionBlock title="Advanced">
+            <SectionBlock title="Ant Design: Advanced">
                 <SubsectionBlock heading="Enterprise UX Consistency at Scale">
                     <p>
                         <strong>Strong defaults across teams:</strong> Ant Design's prescriptive design system ensures

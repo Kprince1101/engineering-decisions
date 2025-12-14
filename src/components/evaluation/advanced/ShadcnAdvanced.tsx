@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function ShadcnAdvanced() {
     return (
         <ContentContainer>
-            <SectionBlock title="Advanced">
+            <SectionBlock title="shadcn/ui: Advanced">
                 <SubsectionBlock heading="Design Tokens, Theming & Styling Ownership">
                     <p>
                         <strong>Tailwind as the styling mechanism:</strong> shadcn/ui components are styled exclusively with Tailwind

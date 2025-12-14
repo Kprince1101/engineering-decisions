@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function ChakraAdvanced() {
     return (
         <ContentContainer>
-            <SectionBlock title="Advanced">
+            <SectionBlock title="Chakra UI: Advanced">
                 <SubsectionBlock heading="Theme Architecture & Token Strategy">
                     <p>
                         <strong>Centralized theme via ChakraProvider:</strong> All design tokens live in a single

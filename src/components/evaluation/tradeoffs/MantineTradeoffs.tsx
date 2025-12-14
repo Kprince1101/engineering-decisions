@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function MantineTradeoffs() {
     return (
         <ContentContainer>
-            <SectionBlock title="Tradeoffs">
+            <SectionBlock title="Mantine: Tradeoffs">
                 <SubsectionBlock heading="Design-System Rigidity vs Flexibility">
                     <p>
                         <strong>The Problem:</strong> Mantine's theme system is comprehensive but structurally opinionated.

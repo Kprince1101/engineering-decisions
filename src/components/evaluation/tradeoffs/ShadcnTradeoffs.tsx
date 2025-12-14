@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock, CalloutNote } from '@/
 export function ShadcnTradeoffs() {
     return (
         <ContentContainer>
-            <SectionBlock title="Tradeoffs">
+            <SectionBlock title="shadcn/ui: Tradeoffs">
                 <SubsectionBlock heading="Design Drift & Consistency Risk">
                     <p>
                         <strong>Lack of enforced design tokens:</strong> shadcn/ui components use Tailwind utilities directly.

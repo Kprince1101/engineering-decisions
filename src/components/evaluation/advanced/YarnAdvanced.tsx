@@ -3,7 +3,7 @@ import { ContentContainer, SectionBlock, SubsectionBlock } from '@/components/co
 export function YarnAdvanced() {
     return (
         <ContentContainer>
-            <SectionBlock title="Advanced Capabilities">
+            <SectionBlock title="yarn: Advanced Capabilities">
                 <SubsectionBlock heading="Plug'n'Play (PnP)">
                     <p>
                         Yarn Berry introduced PnP, which replaces <code>node_modules</code> with a map file.
