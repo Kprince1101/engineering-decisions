@@ -11,16 +11,16 @@ function TestingFrameworksLayoutContent({ children }: { children: ReactNode }) {
     const { activeSection, setActiveSection } = useSection();
 
     return (
-        <>
+        <div style={{ width: '85%' }} className="mx-auto">
             <SectionTabs
                 sections={domain.sections}
                 active={activeSection}
                 onChange={setActiveSection}
             />
-            <DocumentSurface className="w-full max-w-6xl">
+            <DocumentSurface>
                 {children}
             </DocumentSurface>
-        </>
+        </div>
     );
 }
 
