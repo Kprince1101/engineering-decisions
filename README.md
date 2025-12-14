@@ -48,7 +48,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ### First Run
 
-The voting system uses SQLite for persistence. The database will be automatically created at `data/votes.db` on first vote. No additional setup required.
+The voting system uses Vercel KV (Redis) for persistence. No database setup required - votes are stored in Redis and isolated by evaluation domain.
 
 ## Project Structure
 
@@ -72,12 +72,10 @@ engineering-decisions/
 │   │       ├── VoteChart.tsx   # SVG bar chart
 │   │       └── VoteExport.tsx  # Export functionality
 │   └── lib/
-│       ├── voteStore.ts        # SQLite database layer
+│       ├── voteStore.ts        # Vercel KV integration
 │       ├── useVoting.ts        # React voting hook
 │       └── voteExport.ts       # Export utilities
-├── data/
-│   └── votes.db                # SQLite database (auto-created)
-└── public/                     # Static assets
+├── public/                     # Static assets
 ```
 
 ## Architecture
@@ -86,28 +84,24 @@ engineering-decisions/
 
 **Anonymous & Privacy-Preserving:**
 - IP addresses are SHA-256 hashed before storage
+**Anonymous & Privacy-Preserving:**
+- No IP tracking or user identification
 - No user accounts or authentication
-- One vote per IP address per library option
-- Client-side localStorage prevents accidental re-voting (UX enhancement only)
+- Client-side localStorage manages vote state per domain
+- Votes are persisted in Redis with domain-based namespacing
 
 **Technology Stack:**
-- **Database**: SQLite (better-sqlite3) for persistent storage
+- **Database**: Vercel KV (Redis) for serverless-safe persistence
 - **API**: Next.js App Router API routes (`/api/vote`)
 - **Visualization**: Plain SVG (no external charting library)
 - **Export**: JSON snapshots + clipboard text summaries
 
-**Schema:**
-```sql
-CREATE TABLE votes (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    option TEXT NOT NULL,              
-    ip_hash TEXT NOT NULL,             
-    timestamp INTEGER NOT NULL,
-    UNIQUE(option, ip_hash)            
-);
+**Storage Structure:**
 ```
-
-### Evaluation Content (Phase 1)
+Redis Hash Keys:
+votes:ui-systems → { mantine: 5, shadcn: 3, ... }
+votes:package-managers → { npm: 10, yarn: 7, pnpm: 8 }
+``` Evaluation Content (Phase 1)
 
 All evaluation content is modularized into dedicated files per library:
 - Each section (Context, Components, Advanced, Tradeoffs) has 4 library-specific files
@@ -120,18 +114,19 @@ All evaluation content is modularized into dedicated files per library:
 - Side-by-side comparison of 4 popular React UI libraries
 - In-depth analysis across 4 key dimensions
 - Neutral, factual presentation (no prescriptive recommendations)
+### Core Evaluation
+- Side-by-side comparison across multiple evaluation domains
+- In-depth analysis across multiple key dimensions
+- Neutral, factual presentation (no prescriptive recommendations)
 
 ### Voting System
-- ✅ Anonymous voting (IP-based duplicate prevention)
-- ✅ Persistent storage (SQLite)
+- ✅ Anonymous voting (no user tracking)
+- ✅ Persistent storage (Vercel KV / Redis)
+- ✅ Domain-scoped vote isolation
 - ✅ Real-time vote counts
 - ✅ Bar chart visualization
 - ✅ Export results (JSON download + clipboard copy)
 - ✅ Non-competitive framing ("preferences" not "winners")
-
-### Export Formats
-
-**JSON Export:**
 ```json
 {
   "timestamp": "2025-12-12T14:32:00Z",
@@ -172,24 +167,23 @@ npm start
 ### Key Dependencies
 - **next**: 15.x (App Router)
 - **react**: 19.x
-- **better-sqlite3**: 9.x (voting persistence)
+### Key Dependencies
+- **next**: 16.x (App Router)
+- **react**: 19.x
+- **@vercel/kv**: 3.x (voting persistence)
 - **typescript**: 5.x
 
 ## Deployment
 
-### Vercel (Recommended for Prototypes)
-**Note**: `better-sqlite3` is not supported on Vercel serverless functions. For production deployment:
+### Vercel (Recommended)
+This application is designed for serverless deployment on Vercel:
 
-1. **Option A**: Migrate to Vercel KV (Redis)
-   - Replace `src/lib/voteStore.ts` with Redis client
-   - Update API routes to use KV storage
+1. Connect your repository to Vercel
+2. Ensure Vercel KV is attached to your project
+3. Deploy - votes will persist automatically in Redis
 
-2. **Option B**: Deploy to a platform supporting Node.js native modules
-   - Railway, Render, DigitalOcean App Platform
-   - Ensure persistent storage volume for `data/votes.db`
-
-### Local Production Testing
-```bash
+### Environment Variables
+The `@vercel/kv` package automatically uses environment variables set by Vercel KV. No manual configuration needed.
 npm run build
 npm start
 ```
@@ -200,7 +194,7 @@ This voting system is intentionally designed to:
 - **Support decision-making**, not create popularity contests
 - **Show aggregate preferences**, not competitive rankings
 - **Enable documentation**, not social sharing
-- **Preserve anonymity** via IP hashing
+- **Respect privacy** with no user tracking
 
 Results are presented neutrally without percentages, rankings, or gamification.
 
@@ -211,5 +205,5 @@ MIT
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [better-sqlite3 Documentation](https://github.com/WiseLibs/better-sqlite3)
+- [Vercel KV Documentation](https://vercel.com/docs/storage/vercel-kv)
 - [UI Library Comparison Methodology](./docs/methodology.md)

@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getVoteTotals, toggleVote } from '@/lib/voteStore';
+import { getVotes, incrementVote, decrementVote } from '@/lib/voteStore';
 
 /**
- * Phase 2.1: Persistent vote storage with duplicate detection
+ * Vote API - Vercel KV backed
  * 
- * GET /api/vote - Returns current vote totals
- * POST /api/vote - Toggles support (add/remove)
+ * GET /api/vote?domain=... - Returns current vote totals for domain
+ * POST /api/vote - Toggles support (add/remove) for option in domain
  */
 
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
         const domain = searchParams.get('domain') || 'ui-systems';
-        const votes = getVoteTotals(domain);
+        const votes = await getVotes(domain);
         return NextResponse.json({ votes });
     } catch (error) {
         console.error('Error fetching votes:', error);
@@ -26,32 +26,33 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { option, domain = 'ui-systems' } = body;
+        const { option, domain = 'ui-systems', action } = body;
 
-        // Validate option
+        // Validate required fields
         if (!option) {
             return NextResponse.json(
-                { error: 'Invalid option.' },
+                { error: 'Missing required field: option' },
                 { status: 400 }
             );
         }
 
-        // Toggle support
-        const result = toggleVote(domain, option, request.headers);
-
-        if (!result.success) {
+        if (!domain) {
             return NextResponse.json(
-                { error: result.message || 'Failed to record vote' },
-                { status: 500 }
+                { error: 'Missing required field: domain' },
+                { status: 400 }
             );
         }
 
-        // Return updated totals and new state
-        const votes = getVoteTotals(domain);
-        return NextResponse.json({
-            votes,
-            supported: result.supported
-        });
+        // Perform atomic increment or decrement
+        if (action === 'remove') {
+            await decrementVote(domain, option);
+        } else {
+            await incrementVote(domain, option);
+        }
+
+        // Return updated vote totals
+        const votes = await getVotes(domain);
+        return NextResponse.json({ votes });
     } catch (error) {
         console.error('Error recording vote:', error);
         return NextResponse.json(

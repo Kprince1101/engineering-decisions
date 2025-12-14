@@ -11,8 +11,7 @@
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.20.0",
     "@radix-ui/react-tooltip": "^1.2.8",
-    "@types/better-sqlite3": "^7.6.13",
-    "better-sqlite3": "^12.5.0",
+    "@vercel/kv": "^3.0.0",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1"
