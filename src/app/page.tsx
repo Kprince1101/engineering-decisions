@@ -12,7 +12,7 @@ export default function HomePage() {
     <>
       <Header />
 
-      <main className="bg-slate-100 pt-20 pb-12">
+      <main className="bg-slate-100 pt-20 pb-12 min-h-screen">
         <div className="w-full px-8 flex items-start gap-10">
           <DomainMenu />
           <div className="flex-1 min-w-0">
@@ -69,6 +69,65 @@ export default function HomePage() {
                       Results can be exported as a json object.
                     </li>
                   </ol>
+                </SectionBlock>
+
+                {/* Why This Exists */}
+                <SectionBlock>
+                  <h2 className="text-2xl font-semibold text-slate-800 mb-4">
+                    Why this exists
+                  </h2>
+
+                  <p className="text-slate-700 leading-relaxed">
+                    Engineering decisions mostly fail because tradeoffs are implicit, unevenly understood, or discussed too late.
+                  </p>
+
+                  <p className="mt-4 text-slate-700 leading-relaxed">
+                    This platform exists to make those tradeoffs explicit — in a shared, observable way — before a decision is locked in.
+                  </p>
+
+                  <p className="mt-4 text-slate-700 leading-relaxed">
+                    Instead of relying on documentation, blog posts, or individual preference, this tool provides a consistent structure
+                    for evaluating options against real constraints, defaults, and behavior.
+                  </p>
+                </SectionBlock>
+
+                {/* What This Tool Is */}
+                <SectionBlock>
+                  <h2 className="text-2xl font-semibold text-slate-800 mb-4">
+                    What this tool is
+                  </h2>
+
+                  <ul className="space-y-3 text-slate-700">
+                    <li>
+                      <strong>A shared evaluation surface</strong> for comparing engineering options
+                    </li>
+                    <li>
+                      <strong>A way to ground discussion</strong> in concrete tradeoffs
+                    </li>
+                    <li>
+                      <strong>A decision artifact</strong> that can be referenced in design reviews and ADRs
+                    </li>
+                    <li>
+                      <strong>A place where defaults, ergonomics, and constraints are visible</strong>
+                    </li>
+                  </ul>
+                </SectionBlock>
+
+                {/* Why the Interface is Minimal */}
+                <SectionBlock>
+                  <h2 className="text-2xl font-semibold text-slate-800 mb-4">
+                    Why the interface is intentionally minimal
+                  </h2>
+
+                  <p className="text-slate-700 leading-relaxed">
+                    Outside of interactive demos, the interface is deliberately restrained.
+                  </p>
+
+                  <p className="mt-4 text-slate-700 leading-relaxed">
+                    Visual styling is kept neutral so comparisons stay focused on behavior, ergonomics, and constraints —
+                    rather than presentation. This reduces bias and keeps attention on the tools being evaluated,
+                    not on the tool doing the evaluation.
+                  </p>
                 </SectionBlock>
 
               </ContentContainer>
