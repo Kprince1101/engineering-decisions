@@ -16,7 +16,7 @@ export function SectionBlock({ children, title, className = '' }: SectionBlockPr
     return (
         <section
             className={`flex flex-col gap-4 ${className}`}
-            style={{ width: '85%', marginInline: 'auto', paddingBlockEnd: '2%', paddingBlockStart: '5%' }}
+            style={{ width: '85%', marginInline: 'auto', paddingBlock: '1.5%' }}
         >
             {title && (
                 <h2 className="text-2xl font-semibold text-slate-800">

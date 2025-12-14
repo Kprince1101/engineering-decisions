@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import * as Tooltip from "@radix-ui/react-tooltip";
+import { DevHelperInjector } from "@/components/DevHelperInjector";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-slate-100 text-slate-900 m-0 p-0">
+        <DevHelperInjector />
         <Tooltip.Provider delayDuration={200}>
           {children}
         </Tooltip.Provider>

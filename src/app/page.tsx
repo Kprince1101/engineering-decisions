@@ -21,7 +21,7 @@ export default function HomePage() {
 
                 {/* Intro */}
                 <SectionBlock>
-                  <h1 className="text-3xl font-semibold text-slate-900">
+                  <h1 style={{ paddingBlockStart: '1rem' }} className="text-3xl font-semibold text-slate-900">
                     Engineering Decision Evaluation Platform
                   </h1>
 

@@ -13,14 +13,13 @@ export default function AboutPage() {
             <Header />
 
             <main className="bg-slate-100 pt-20 pb-12">
-                <div className="w-full px-8 flex items-start gap-">
+                <div className="w-full px-8 flex items-start gap-10">
                     <DomainMenu />
                     <div className="flex-1 min-w-0">
                         <DocumentSurface>
                             <ContentContainer>
                                 <SectionBlock>
-                                    <h1 className="text-3xl font-semibold text-slate-900" style={{ paddingTop: '3rem' }}>
-                                        About This Tool
+                                    <h1 className="text-3xl font-semibold text-slate-900" style={{ paddingTop: '3rem' }}>          About This Tool
                                     </h1>
                                 </SectionBlock>
 

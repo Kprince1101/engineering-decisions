@@ -184,9 +184,32 @@ This application is designed for serverless deployment on Vercel:
 
 ### Environment Variables
 The `@vercel/kv` package automatically uses environment variables set by Vercel KV. No manual configuration needed.
-npm run build
-npm start
+
+**For Vote Reset (Development Only):**
+```bash
+# Add to .env.local
+VOTE_RESET_SECRET=your-secure-secret
+NEXT_PUBLIC_VOTE_RESET_SECRET=your-secure-secret
 ```
+
+### Vote Reset (Console Helper)
+
+For development and testing, you can reset vote counts via the browser console:
+
+```javascript
+// Reset votes for a specific domain
+await window.resetVotes('ui-systems')
+await window.resetVotes('package-managers')
+```
+
+This helper:
+- Only works when `VOTE_RESET_SECRET` is configured
+- Requires the matching secret in `.env.local`
+- Does not appear in the UI
+- Logs success/error messages to the console
+- Requires a page refresh to see updated counts
+
+**Security Note:** Change the default secret in production. The secret is intentionally duplicated as a public env var for internal tooling use.
 
 ## Ethical Considerations
 
