@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 type VoteTotals = Record<string, number>;
+type SupportState = Record<string, string | null>; // domain -> supported option
 
 type UseVotingReturn = {
     votes: VoteTotals | null;
@@ -10,35 +11,34 @@ type UseVotingReturn = {
     submitVote: (option: string) => Promise<void>;
 };
 
+const SUPPORT_STORAGE_KEY = 'support';
+
 /**
- * Phase 2.1: Client-side voting hook with server-side persistence
+ * Client-side voting hook with Vercel KV persistence
  * 
- * - Tracks support in localStorage (UX enhancement)
+ * - Tracks user's supported option per domain in localStorage
  * - Fetches aggregate totals from API
- * - Server handles toggle logic
+ * - Supports toggle behavior (add/remove)
  */
 export function useVoting(domainId: string = 'ui-systems'): UseVotingReturn {
     const [votes, setVotes] = useState<VoteTotals | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [userVotes, setUserVotes] = useState<Set<string>>(new Set());
+    const [supportedOption, setSupportedOption] = useState<string | null>(null);
 
-    const STORAGE_KEY = `${domainId}-votes`;
-
-    // Load user's previous votes from localStorage on mount
+    // Load user's support state from localStorage on mount
     useEffect(() => {
-        const stored = localStorage.getItem(STORAGE_KEY);
+        const stored = localStorage.getItem(SUPPORT_STORAGE_KEY);
         if (stored) {
             try {
-                const parsed = JSON.parse(stored);
-                setUserVotes(new Set(parsed));
+                const parsed: SupportState = JSON.parse(stored);
+                setSupportedOption(parsed[domainId] || null);
             } catch (e) {
                 // Ignore parse errors - start fresh
+                setSupportedOption(null);
             }
-        } else {
-            setUserVotes(new Set());
         }
-    }, [STORAGE_KEY]);
+    }, [domainId]);
 
     // Fetch current vote totals
     useEffect(() => {
@@ -64,17 +64,23 @@ export function useVoting(domainId: string = 'ui-systems'): UseVotingReturn {
     };
 
     const hasVoted = (option: string): boolean => {
-        return userVotes.has(option);
+        return supportedOption === option;
     };
 
     const submitVote = async (option: string) => {
+        const isCurrentlySupported = hasVoted(option);
+
         try {
             const response = await fetch('/api/vote', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ option, domain: domainId }),
+                body: JSON.stringify({
+                    option,
+                    domain: domainId,
+                    action: isCurrentlySupported ? 'remove' : undefined
+                }),
             });
 
             if (!response.ok) {
@@ -84,17 +90,15 @@ export function useVoting(domainId: string = 'ui-systems'): UseVotingReturn {
             const data = await response.json();
             setVotes(data.votes);
 
-            // Update local state based on server response
-            const updated = new Set(userVotes);
-            if (data.supported) {
-                updated.add(option);
-            } else {
-                updated.delete(option);
-            }
-            setUserVotes(updated);
+            // Update local support state
+            const newSupportedOption = isCurrentlySupported ? null : option;
+            setSupportedOption(newSupportedOption);
 
             // Persist to localStorage
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(updated)));
+            const stored = localStorage.getItem(SUPPORT_STORAGE_KEY);
+            const supportState: SupportState = stored ? JSON.parse(stored) : {};
+            supportState[domainId] = newSupportedOption;
+            localStorage.setItem(SUPPORT_STORAGE_KEY, JSON.stringify(supportState));
 
             setError(null);
         } catch (e) {
