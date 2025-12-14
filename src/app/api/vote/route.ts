@@ -8,9 +8,11 @@ import { getVoteTotals, toggleVote } from '@/lib/voteStore';
  * POST /api/vote - Toggles support (add/remove)
  */
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     try {
-        const votes = getVoteTotals();
+        const { searchParams } = new URL(request.url);
+        const domain = searchParams.get('domain') || 'ui-systems';
+        const votes = getVoteTotals(domain);
         return NextResponse.json({ votes });
     } catch (error) {
         console.error('Error fetching votes:', error);
@@ -24,18 +26,18 @@ export async function GET() {
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { option } = body;
+        const { option, domain = 'ui-systems' } = body;
 
         // Validate option
-        if (!option || !['mantine', 'shadcn', 'chakra', 'antd'].includes(option)) {
+        if (!option) {
             return NextResponse.json(
-                { error: 'Invalid option. Must be one of: mantine, shadcn, chakra, antd' },
+                { error: 'Invalid option.' },
                 { status: 400 }
             );
         }
 
         // Toggle support
-        const result = toggleVote(option, request.headers);
+        const result = toggleVote(domain, option, request.headers);
 
         if (!result.success) {
             return NextResponse.json(
@@ -45,7 +47,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Return updated totals and new state
-        const votes = getVoteTotals();
+        const votes = getVoteTotals(domain);
         return NextResponse.json({
             votes,
             supported: result.supported

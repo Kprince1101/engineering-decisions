@@ -4,11 +4,6 @@ export function MantineAdvanced() {
     return (
         <ContentContainer>
             <SectionBlock title="Advanced">
-                <CalloutNote>
-                    This section examines how Mantine behaves under real-world architectural pressure—theming at scale,
-                    composition patterns, accessibility depth, and integration constraints.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Theming & Design Tokens">
                     <p>
                         <strong>MantineProvider & Theme Overrides:</strong> Mantine uses a theme object passed to MantineProvider

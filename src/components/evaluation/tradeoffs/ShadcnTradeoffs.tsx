@@ -4,12 +4,6 @@ export function ShadcnTradeoffs() {
     return (
         <ContentContainer>
             <SectionBlock title="Tradeoffs">
-                <CalloutNote>
-                    This section examines where shadcn/ui's ownership model becomes a burden, where flexibility turns
-                    into inconsistency, and when teams should choose a different approach. Written as a warning label,
-                    not a sales pitch.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Design Drift & Consistency Risk">
                     <p>
                         <strong>Lack of enforced design tokens:</strong> shadcn/ui components use Tailwind utilities directly.

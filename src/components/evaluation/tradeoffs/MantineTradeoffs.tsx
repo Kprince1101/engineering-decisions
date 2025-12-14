@@ -4,11 +4,6 @@ export function MantineTradeoffs() {
     return (
         <ContentContainer>
             <SectionBlock title="Tradeoffs">
-                <CalloutNote>
-                    This section examines where Mantine succeeds, where it creates problems, and when you should
-                    choose something else. Written from experience, not marketing.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Design-System Rigidity vs Flexibility">
                     <p>
                         <strong>The Problem:</strong> Mantine's theme system is comprehensive but structurally opinionated.

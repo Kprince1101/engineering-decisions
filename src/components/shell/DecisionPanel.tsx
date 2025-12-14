@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useVoting } from '@/lib/useVoting';
+import { evaluationDomains } from '@/config/domains';
 
 /**
  * Decision Panel: Global support state in header
@@ -11,11 +12,17 @@ import { useVoting } from '@/lib/useVoting';
  */
 export function DecisionPanel() {
     const pathname = usePathname();
-    const { votes, isLoading, error, hasVoted, submitVote } = useVoting();
 
-    // Extract library from pathname
-    const currentLibrary = pathname?.match(/\/(mantine|shadcn|chakra|antd)$/)?.[1] as
-        'mantine' | 'shadcn' | 'chakra' | 'antd' | undefined;
+    // Determine active domain
+    const activeDomain = evaluationDomains.find(d => pathname?.includes(`/topic/${d.id}`))
+        || evaluationDomains.find(d => d.id === 'ui-systems')!;
+
+    const { votes, isLoading, error, hasVoted, submitVote } = useVoting(activeDomain.id);
+
+    // Extract current option from pathname (last segment)
+    // e.g. /topic/ui-systems/mantine -> mantine
+    const currentOption = pathname?.split('/').pop();
+    const isValidOption = currentOption && activeDomain.headerLinks.some(link => link.href.endsWith(currentOption));
 
     if (isLoading) {
         return (
@@ -35,48 +42,47 @@ export function DecisionPanel() {
 
     const total = votes ? Object.values(votes).reduce((sum, count) => sum + count, 0) : 0;
 
+    // Merge votes with all available options for the domain to ensure 0s are shown
+    const allOptions = activeDomain.headerLinks.map(link => link.href.split('/').pop()!);
+    const displayVotes = allOptions.reduce((acc, option) => {
+        acc[option] = (votes && votes[option]) || 0;
+        return acc;
+    }, {} as Record<string, number>);
+
     return (
         <div
             className="bg-slate-800/50 border border-slate-700 rounded-md py-1.5 text-xs text-slate-200 flex items-center gap-4 h-9 px-4"
-            style={{ paddingLeft: '0.5rem', paddingRight: '0.5rem' }}
+            style={{ paddingLeft: '0.5rem', paddingRight: '0.5rem', marginRight: '0.5rem' }}
         >
             {/* Support Action */}
-            {currentLibrary && (
+            {isValidOption && (
                 <>
                     <VoteButton
-                        library={currentLibrary}
-                        isSupported={hasVoted(currentLibrary)}
-                        onToggle={() => submitVote(currentLibrary)}
+                        library={currentOption}
+                        isSupported={hasVoted(currentOption)}
+                        onToggle={() => submitVote(currentOption)}
                     />
                     <div className="h-3 w-px bg-slate-700" />
                 </>
             )}
 
             {/* Support counts - Horizontal Row */}
-            {total > 0 ? (
-                <>
-                    <div className="flex items-center gap-3">
-                        {Object.entries(votes || {})
-                            .sort(([, a], [, b]) => b - a)
-                            .map(([option, count]) => (
-                                <div key={option} className="flex items-center gap-1.5">
-                                    <span className="text-slate-400">{option}</span>
-                                    <span className="text-slate-100 font-medium">{count}</span>
-                                </div>
-                            ))}
-                    </div>
+            <div className="flex items-center gap-3">
+                {Object.entries(displayVotes)
+                    .sort(([, a], [, b]) => b - a)
+                    .map(([option, count]) => (
+                        <div key={option} className="flex items-center gap-1.5">
+                            <span className="text-slate-400">{option}</span>
+                            <span className="text-slate-100 font-medium">{count}</span>
+                        </div>
+                    ))}
+            </div>
 
-                    <div className="h-3 w-px bg-slate-700" />
+            <div className="h-3 w-px bg-slate-700" />
 
-                    <div className="flex gap-2">
-                        <ExportButton votes={votes} />
-                    </div>
-                </>
-            ) : (
-                <p className="text-slate-500 m-0">
-                    No support recorded yet
-                </p>
-            )}
+            <div className="flex gap-2">
+                <ExportButton votes={displayVotes} />
+            </div>
         </div>
     );
 }

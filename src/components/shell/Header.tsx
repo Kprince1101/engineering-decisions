@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import { DecisionPanel } from './DecisionPanel';
+import { evaluationDomains } from '@/config/domains';
 
 /**
  * Sticky header with three zones:
@@ -11,49 +13,40 @@ import { DecisionPanel } from './DecisionPanel';
  * Voting UI is always visible, turns decision into global state
  */
 export function Header({ children }: { children?: ReactNode }) {
+    const pathname = usePathname();
+    const activeDomain = evaluationDomains.find(d => pathname?.includes(`/topic/${d.id}`))
+        || evaluationDomains.find(d => d.id === 'ui-systems');
+
     return (
-        <header className="sticky top-0 z-20 bg-slate-950 border-b border-slate-800 shadow-sm">
-            <div className="mx-auto max-w-7xl h-16 px-6 flex items-center">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950 border-b border-slate-800 w-full shadow-sm">
+            <div className="w-full px-8 h-16 flex items-center gap-10">
                 {/* Left: App Identity */}
                 <Link
                     href={'/'}
                     className="text-lg font-semibold text-slate-100 whitespace-nowrap shrink-0"
-                    style={{ fontSize: '1.5rem', marginLeft: '2%', color: '#f1f5f9' }}
+                    style={{ fontSize: '1.5rem', color: '#f1f5f9', paddingInlineStart: '2%' }}
                 >
-                    Engineering Decisions
+                    Engineering Decisions Evaluation Tool
                 </Link>
 
                 {/* Center: Navigation */}
                 <div className="flex-1 flex justify-center px-4">
                     <nav className="flex gap-8 text-sm font-semibold text-slate-100">
-                        <Link
-                            href="/topic/ui-systems/mantine"
-                            className="hover:text-white transition-colors"
-                            style={{ color: '#f1f5f9' }}
-                        >
-                            Mantine
-                        </Link>
-                        <Link
-                            href="/topic/ui-systems/shadcn"
-                            className="hover:text-white transition-colors"
-                            style={{ color: '#f1f5f9' }}
-                        >
-                            shadcn/ui
-                        </Link>
-                        <Link
-                            href="/topic/ui-systems/chakra"
-                            className="hover:text-white transition-colors"
-                            style={{ color: '#f1f5f9' }}
-                        >
-                            Chakra
-                        </Link>
-                        <Link
-                            href="/topic/ui-systems/antd"
-                            className="hover:text-white transition-colors"
-                            style={{ color: '#f1f5f9' }}
-                        >
-                            AntD
-                        </Link>
+                        {activeDomain?.headerLinks.map((link) => {
+                            const isActive = pathname === link.href;
+                            return (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className={`hover:text-white transition-colors pb-1 border-b-2 ${isActive
+                                            ? 'border-white text-white'
+                                            : 'border-transparent text-slate-100'
+                                        }`}
+                                >
+                                    {link.label}
+                                </Link>
+                            );
+                        })}
                     </nav>
                 </div>
 

@@ -4,12 +4,6 @@ export function AntdAdvanced() {
     return (
         <ContentContainer>
             <SectionBlock title="Advanced">
-                <CalloutNote>
-                    This section examines Ant Design's system-level architecture—how its prescriptive,
-                    enterprise-optimized model behaves at scale, where strong defaults accelerate delivery,
-                    and where rigidity becomes a constraint.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Enterprise UX Consistency at Scale">
                     <p>
                         <strong>Strong defaults across teams:</strong> Ant Design's prescriptive design system ensures

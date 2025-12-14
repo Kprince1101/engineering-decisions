@@ -1,16 +1,28 @@
-# Engineering Decisions: UI Library Evaluation Tool
+# Engineering Decision Evaluation Tool
 
-A comprehensive evaluation framework for comparing React UI component libraries (Ant Design, Chakra UI, Mantine, shadcn/ui) with anonymous voting functionality to support informed decision-making.
+A comprehensive framework for evaluating critical engineering choices, documenting tradeoffs, and gathering team consensus through anonymous voting.
 
 ## What This Is
 
-This tool helps engineering teams evaluate UI libraries across multiple dimensions:
+This tool helps engineering teams make informed decisions by providing structured evaluation frameworks for different technical topics. It moves beyond simple pros/cons lists to deep, multi-dimensional analysis.
+
+### Current Modules
+
+#### 1. UI Component Systems
+Compare React UI component libraries (Ant Design, Chakra UI, Mantine, shadcn/ui) across:
 - **Context & Background**: Design philosophy, ecosystem maturity, community size
 - **Component Coverage**: Breadth and depth of available components
 - **Advanced Features**: TypeScript support, theming, accessibility, performance
 - **Tradeoffs & Constraints**: Bundle size, learning curve, customization flexibility
 
-Features an **anonymous voting system** that allows teams to register preferences while viewing aggregate results. Voting is designed as a decision aid, not a popularity contest—results are presented in a neutral, non-competitive format.
+#### 2. Package Managers (Coming Soon)
+Evaluation of npm, yarn, and pnpm focusing on performance, security, and workspace management.
+
+## Key Features
+
+- **Structured Analysis**: Consistent evaluation criteria for fair comparison.
+- **Anonymous Voting**: Allows teams to register preferences without bias.
+- **Decision Records**: Exportable data to support Architecture Decision Records (ADRs).
 
 ## Quick Start
 
@@ -22,7 +34,7 @@ Features an **anonymous voting system** that allows teams to register preference
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/Kprince1101/engineering-decisions
 cd engineering-decisions
 
 # Install dependencies
@@ -88,10 +100,10 @@ engineering-decisions/
 ```sql
 CREATE TABLE votes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    option TEXT NOT NULL,              -- Library name (antd, chakra, mantine, shadcn)
-    ip_hash TEXT NOT NULL,             -- SHA-256 hash of voter IP
+    option TEXT NOT NULL,              
+    ip_hash TEXT NOT NULL,             
     timestamp INTEGER NOT NULL,
-    UNIQUE(option, ip_hash)            -- Prevents duplicate votes
+    UNIQUE(option, ip_hash)            
 );
 ```
 
@@ -200,4 +212,4 @@ MIT
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [better-sqlite3 Documentation](https://github.com/WiseLibs/better-sqlite3)
-- [UI Library Comparison Methodology](./docs/methodology.md) _(if you create this)_
+- [UI Library Comparison Methodology](./docs/methodology.md)

@@ -14,7 +14,7 @@ type ContentContainerProps = {
  */
 export function ContentContainer({ children, className = '' }: ContentContainerProps) {
     return (
-        <div className={`max-w-5xl mx-auto space-y-12 leading-relaxed text-slate-800 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 ${className}`}>
+        <div style={{ paddingBlockStart: '1.2rem' }} className={`max-w-6xl mx-auto space-y-6 leading-relaxed text-slate-800 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 ${className}`}>
             {children}
         </div>
     );

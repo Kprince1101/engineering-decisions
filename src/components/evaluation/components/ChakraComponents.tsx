@@ -6,12 +6,6 @@ export function ChakraComponents() {
     return (
         <ContentContainer>
             <SectionBlock title="Components">
-                <p>
-                    This section evaluates Chakra UI's component architecture, focusing on how the theme-driven,
-                    style-props model balances accessibility defaults with customization flexibility. The emphasis
-                    is on understanding what Chakra handles automatically and where you retain control.
-                </p>
-
                 <SubsectionBlock heading="Buttons & Interactive Elements">
                     <p>
                         <strong>Prebuilt variants with theme integration:</strong> Chakra's Button component ships with

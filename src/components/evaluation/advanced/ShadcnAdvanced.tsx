@@ -4,11 +4,6 @@ export function ShadcnAdvanced() {
     return (
         <ContentContainer>
             <SectionBlock title="Advanced">
-                <CalloutNote>
-                    This section examines what teams own when they choose shadcn/ui—design tokens, composition patterns,
-                    accessibility depth, performance characteristics, and long-term maintenance responsibilities.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Design Tokens, Theming & Styling Ownership">
                     <p>
                         <strong>Tailwind as the styling mechanism:</strong> shadcn/ui components are styled exclusively with Tailwind

@@ -4,12 +4,6 @@ export function ChakraAdvanced() {
     return (
         <ContentContainer>
             <SectionBlock title="Advanced">
-                <CalloutNote>
-                    This section examines Chakra UI's system-level architecture—how the theme-driven,
-                    CSS-in-JS model behaves at scale, where runtime abstractions provide value, and where
-                    they introduce constraints or costs.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Theme Architecture & Token Strategy">
                     <p>
                         <strong>Centralized theme via ChakraProvider:</strong> All design tokens live in a single

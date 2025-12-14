@@ -6,7 +6,7 @@ type DemoBlockProps = {
 
 export function DemoBlock({ title, description, children }: DemoBlockProps) {
     return (
-        <div>
+        <div style={{ maxWidth: '100%' }}>
             <h3>{title}</h3>
             {description && <p>{description}</p>}
             {children ? (

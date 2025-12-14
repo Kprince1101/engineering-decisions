@@ -6,11 +6,6 @@ export function ShadcnComponents() {
     return (
         <ContentContainer>
             <SectionBlock title="Components">
-                <p>
-                    This section examines how shadcn/ui components are structured, what you're responsible for maintaining,
-                    and how this ownership model differs from abstraction-heavy libraries.
-                </p>
-
                 <SubsectionBlock heading="Buttons & Interactive Elements">
                     <p>
                         <strong>What you get:</strong> A Button component built on headless primitives, styled with Tailwind utilities.

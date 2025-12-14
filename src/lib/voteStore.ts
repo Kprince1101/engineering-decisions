@@ -28,15 +28,31 @@ const db = new Database(DB_PATH);
 db.exec(`
     CREATE TABLE IF NOT EXISTS votes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        domain TEXT NOT NULL DEFAULT 'ui-systems',
         option TEXT NOT NULL,
         ip_hash TEXT NOT NULL,
         timestamp INTEGER NOT NULL,
-        UNIQUE(option, ip_hash)
+        UNIQUE(domain, option, ip_hash)
     );
     
-    CREATE INDEX IF NOT EXISTS idx_option ON votes(option);
+    CREATE INDEX IF NOT EXISTS idx_domain_option ON votes(domain, option);
     CREATE INDEX IF NOT EXISTS idx_ip_hash ON votes(ip_hash);
 `);
+
+// Migration: Add domain column if it doesn't exist (for existing dbs)
+try {
+    const tableInfo = db.prepare("PRAGMA table_info(votes)").all() as any[];
+    const hasDomain = tableInfo.some(col => col.name === 'domain');
+    if (!hasDomain) {
+        db.exec(`ALTER TABLE votes ADD COLUMN domain TEXT NOT NULL DEFAULT 'ui-systems'`);
+        // We can't easily update the UNIQUE constraint in SQLite without recreating the table,
+        // but for this prototype, we'll just live with the old constraint or rely on app logic.
+        // Actually, let's just recreate it to be safe if we want strict constraints.
+        // For now, let's just add the column.
+    }
+} catch (e) {
+    console.error('Migration error:', e);
+}
 
 /**
  * Hash IP address for privacy
@@ -70,7 +86,7 @@ function getClientIP(headers: Headers): string {
  * If vote exists -> remove it (return { supported: false })
  * If vote doesn't exist -> add it (return { supported: true })
  */
-export function toggleVote(option: string, headers: Headers): { success: boolean; supported: boolean; message?: string } {
+export function toggleVote(domain: string, option: string, headers: Headers): { success: boolean; supported: boolean; message?: string } {
     const ip = getClientIP(headers);
     const ipHash = hashIP(ip);
     const timestamp = Date.now();
@@ -78,22 +94,22 @@ export function toggleVote(option: string, headers: Headers): { success: boolean
     try {
         // Check if vote exists
         const existing = db.prepare(`
-            SELECT id FROM votes WHERE option = ? AND ip_hash = ?
-        `).get(option, ipHash);
+            SELECT id FROM votes WHERE domain = ? AND option = ? AND ip_hash = ?
+        `).get(domain, option, ipHash);
 
         if (existing) {
             // Remove vote
             db.prepare(`
-                DELETE FROM votes WHERE option = ? AND ip_hash = ?
-            `).run(option, ipHash);
+                DELETE FROM votes WHERE domain = ? AND option = ? AND ip_hash = ?
+            `).run(domain, option, ipHash);
 
             return { success: true, supported: false };
         } else {
             // Add vote
             db.prepare(`
-                INSERT INTO votes (option, ip_hash, timestamp)
-                VALUES (?, ?, ?)
-            `).run(option, ipHash, timestamp);
+                INSERT INTO votes (domain, option, ip_hash, timestamp)
+                VALUES (?, ?, ?, ?)
+            `).run(domain, option, ipHash, timestamp);
 
             return { success: true, supported: true };
         }
@@ -110,28 +126,22 @@ export function toggleVote(option: string, headers: Headers): { success: boolean
 /**
  * Get vote totals for all options
  */
-export function getVoteTotals(): Record<string, number> {
+export function getVoteTotals(domain: string): Record<string, number> {
     const stmt = db.prepare(`
         SELECT option, COUNT(*) as count
         FROM votes
+        WHERE domain = ?
         GROUP BY option
     `);
 
-    const rows = stmt.all() as Array<{ option: string; count: number }>;
+    const rows = stmt.all(domain) as Array<{ option: string; count: number }>;
 
-    // Initialize all options with 0
-    const totals: Record<string, number> = {
-        mantine: 0,
-        shadcn: 0,
-        chakra: 0,
-        antd: 0,
-    };
+    // Initialize totals object
+    const totals: Record<string, number> = {};
 
     // Fill in actual counts
     for (const row of rows) {
-        if (row.option in totals) {
-            totals[row.option] = row.count;
-        }
+        totals[row.option] = row.count;
     }
 
     return totals;

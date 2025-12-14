@@ -1,22 +1,18 @@
-export type Section = 'context' | 'components' | 'advanced' | 'tradeoffs';
+import { EvaluationSection } from '@/config/domains';
+
+export type Section = string;
 
 interface SectionTabsProps {
+    sections: EvaluationSection[];
     active: Section;
     onChange: (section: Section) => void;
 }
 
-export function SectionTabs({ active, onChange }: SectionTabsProps) {
-    const tabs: { id: Section; label: string }[] = [
-        { id: 'context', label: 'Context' },
-        { id: 'components', label: 'Components' },
-        { id: 'advanced', label: 'Advanced' },
-        { id: 'tradeoffs', label: 'Tradeoffs' },
-    ];
-
+export function SectionTabs({ sections, active, onChange }: SectionTabsProps) {
     return (
-        <nav className="bg-slate-100 border-b border-slate-200 w-full flex justify-center">
+        <nav className="bg-slate-100 border-b border-slate-200 w-full flex justify-center sticky top-16 z-40">
             <div className="flex gap-4">
-                {tabs.map((tab) => (
+                {sections.map((tab) => (
                     <button
                         key={tab.id}
                         onClick={() => onChange(tab.id)}

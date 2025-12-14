@@ -4,13 +4,6 @@ export function AntdTradeoffs() {
     return (
         <ContentContainer>
             <SectionBlock title="Tradeoffs">
-                <CalloutNote>
-                    This section examines where Ant Design's prescriptive enterprise model becomes a liability,
-                    where performance and bundle costs are unacceptable, and when customization effort exceeds
-                    the benefit of using a comprehensive UI library. Written as guardrails for teams evaluating
-                    whether Ant Design's tradeoffs align with their context.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Performance & Payload Risk">
                     <p>
                         <strong>Heavy initial load for consumer applications:</strong> Ant Design's bundle size is substantial—

@@ -4,12 +4,6 @@ export function ChakraTradeoffs() {
     return (
         <ContentContainer>
             <SectionBlock title="Tradeoffs">
-                <CalloutNote>
-                    This section examines where Chakra UI's runtime abstractions become constraints, where accessibility
-                    guarantees break down, and when the CSS-in-JS overhead outweighs the theming convenience. Written as
-                    a risk assessment for teams evaluating whether Chakra's tradeoffs align with their priorities.
-                </CalloutNote>
-
                 <SubsectionBlock heading="Runtime Performance & Scale">
                     <p>
                         <strong>CSS-in-JS overhead on large surfaces:</strong> Chakra's runtime styling becomes measurable

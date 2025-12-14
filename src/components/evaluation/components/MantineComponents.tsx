@@ -6,11 +6,6 @@ export function MantineComponents() {
     return (
         <ContentContainer>
             <SectionBlock title="Components">
-                <p>
-                    This section evaluates core component patterns that appear in most production applications.
-                    The focus is on ergonomics, accessibility, and real-world usability.
-                </p>
-
                 <SubsectionBlock heading="Buttons">
                     <CriteriaGrid>
                         <CriteriaItem label="What matters">

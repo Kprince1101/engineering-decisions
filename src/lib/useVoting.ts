@@ -1,18 +1,14 @@
 import { useState, useEffect } from 'react';
 
-type VoteOption = 'mantine' | 'shadcn' | 'chakra' | 'antd';
-
-type VoteTotals = Record<VoteOption, number>;
+type VoteTotals = Record<string, number>;
 
 type UseVotingReturn = {
     votes: VoteTotals | null;
     isLoading: boolean;
     error: string | null;
-    hasVoted: (option: VoteOption) => boolean;
-    submitVote: (option: VoteOption) => Promise<void>;
+    hasVoted: (option: string) => boolean;
+    submitVote: (option: string) => Promise<void>;
 };
-
-const STORAGE_KEY = 'ui-systems-votes';
 
 /**
  * Phase 2.1: Client-side voting hook with server-side persistence
@@ -21,11 +17,13 @@ const STORAGE_KEY = 'ui-systems-votes';
  * - Fetches aggregate totals from API
  * - Server handles toggle logic
  */
-export function useVoting(): UseVotingReturn {
+export function useVoting(domainId: string = 'ui-systems'): UseVotingReturn {
     const [votes, setVotes] = useState<VoteTotals | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [userVotes, setUserVotes] = useState<Set<VoteOption>>(new Set());
+    const [userVotes, setUserVotes] = useState<Set<string>>(new Set());
+
+    const STORAGE_KEY = `${domainId}-votes`;
 
     // Load user's previous votes from localStorage on mount
     useEffect(() => {
@@ -37,18 +35,20 @@ export function useVoting(): UseVotingReturn {
             } catch (e) {
                 // Ignore parse errors - start fresh
             }
+        } else {
+            setUserVotes(new Set());
         }
-    }, []);
+    }, [STORAGE_KEY]);
 
     // Fetch current vote totals
     useEffect(() => {
         fetchVotes();
-    }, []);
+    }, [domainId]);
 
     const fetchVotes = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch('/api/vote');
+            const response = await fetch(`/api/vote?domain=${domainId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch votes');
             }
@@ -63,18 +63,18 @@ export function useVoting(): UseVotingReturn {
         }
     };
 
-    const hasVoted = (option: VoteOption): boolean => {
+    const hasVoted = (option: string): boolean => {
         return userVotes.has(option);
     };
 
-    const submitVote = async (option: VoteOption) => {
+    const submitVote = async (option: string) => {
         try {
             const response = await fetch('/api/vote', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ option }),
+                body: JSON.stringify({ option, domain: domainId }),
             });
 
             if (!response.ok) {

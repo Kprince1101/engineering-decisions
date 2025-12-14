@@ -6,13 +6,6 @@ export function AntdComponents() {
     return (
         <ContentContainer>
             <SectionBlock title="Components">
-                <p>
-                    This section evaluates Ant Design's component architecture, focusing on how its opinionated,
-                    enterprise-optimized patterns handle complex workflows, data-heavy interfaces, and large-scale
-                    consistency requirements. The emphasis is on understanding what Ant Design optimizes for and
-                    where its prescriptive nature becomes a constraint.
-                </p>
-
                 <SubsectionBlock heading="Tables & Data Grids">
                     <p>
                         <strong>Table as a first-class citizen:</strong> Ant Design's Table component is not an afterthought—it's
